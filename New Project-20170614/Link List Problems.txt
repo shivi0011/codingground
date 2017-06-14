@@ -1,0 +1,574 @@
+==========================
+Singly Linked List:
+==========================
+Introduction to Linked List
+Linked List vs Array
+Linked List Insertion
+Linked List Deletion (Deleting a given key)
+Linked List Deletion (Deleting a key at given position)
+A Programmer’s approach of looking at Array vs. Linked List
+Find Length of a Linked List (Iterative and Recursive)
+Search an element in a Linked List (Iterative and Recursive)
+How to write C functions that modify head pointer of a Linked List?
+Swap nodes in a linked list without swapping data[ *** use 4 pointers currX, prevX, currY, prevY
+
+void swapNodes(Node **head,int x, int y)
+{
+Node *p = *head;
+if(x==y) return;	//if  both nodes are same
+
+//need to use 4 pointers
+Node *currX = *head;
+Node *prevX = NULL;
+
+Node *currY = *head;
+Node *prevY = NULL;
+
+while(currX && currX->data != x)
+{
+	prevX = currX;
+	currX = currX->next;
+}
+while(currY && currY->data != y)
+{
+	prevY = currY;
+	currY = currY->next;
+}
+if(currX==NULL || currY==NULL) return;	// If either x or y is not present, nothing to do
+
+if(prevX!=NULL) prevX->next = currY;  //if x is not head
+else *head = currY;		      //else make y as new head
+
+if(prevY!=NULL) prevY->next = currX;  //if y is not head
+else *head = currX;		      //else make x as new head
+
+Node *tmp = currX->next;
+currX->next = currY->next;
+currY->next = tmp;
+}
+int main()
+{
+Node *head=NULL;
+insert(&head,1);
+insert(&head,2);
+insert(&head,3);
+insert(&head,4);
+insert(&head,5);
+insert(&head,6);
+insert(&head,7);
+insert(&head,8);
+
+printList(head);
+swapNodes(&head,3,7);
+printList(head);
+return 0;
+}
+]
+Write a function to get Nth node in a Linked List
+Print the middle of a given linked list[
+void printMiddle(Node *head)
+{
+	Node *slow = head;
+	Node *fast = head;
+	while(fast && fast->next)
+	{
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+	printf("%d\n",slow->data);
+}
+
+void printMiddle(struct node *head)
+{
+    int count = 0;
+    struct node *mid = head;
+ 
+    while (head != NULL)
+    {
+        /* update mid, when 'count' is odd number */
+        if (count & 1)
+            mid = mid->next;
+ 
+        ++count;
+        head = head->next;
+    }
+ 
+    /* if empty list is provided */
+    if (mid != NULL)
+        printf("The middle element is [%d]\n\n", mid->data);
+}
+]
+Nth node from the end of a Linked List[     move 1 pointer till nth nodes from begining then move both slow and fast one by one
+Method 1 (Use length of linked list)
+1) Calculate the length of Linked List. Let the length be len.
+2) Print the (len – n + 1)th node from the begining of the Linked List.
+
+Method 2 (Use two pointers) 
+Maintain two pointers – reference pointer and main pointer. Initialize both reference and main pointers to head. First move reference pointer to n nodes from head. Now move both pointers one by one until reference pointer reaches end. Now main pointer will point to nth node from the end. Return main pointer.
+
+int nthnodefromlast(Node *head,int y)
+{
+	int count=0;
+	Node *slow=head;
+	Node *fast=head;
+	
+	//move 1 pointer till y nodes then move both one by one
+	while(head!=NULL)
+	{
+		if(fast== NULL) {printf("%d is greater than the number of nodes in the list\n",y);exit(1);}
+		if(count!=y)
+		{
+		fast = fast->link;
+		count++;
+		}
+		else
+		break;
+	}
+	while(fast!=NULL)
+	{
+		slow=slow->link;
+		fast =fast->link;
+	}
+	printf("%dth node from last is %d\n",y,slow->data);	
+return 0;
+}
+
+
+]
+Write a function to delete a Linked List
+Write a function that counts the number of times a given int occurs in a Linked List
+Reverse a linked list[
+struct Node* reverse(struct Node *head)
+{
+    struct Node *p=head;
+    struct Node *q= NULL, *r=NULL;
+    
+    while(p!=NULL)
+    {
+        r = q;
+        q = p;
+        p = p->next;
+        
+        q->next = r;
+    }
+    //head = q;
+return q;
+}
+
+Recursive with global head
+================= 
+void reverse(Node *p)
+{
+	Node *q=NULL;
+	Node *r=NULL;
+	
+	if(p->next ==  NULL)
+	{
+		head=p;
+		return;
+	}
+	reverse(p->next);
+	q=p->next;
+	q->next = p;
+	p->next = NULL; 	 
+} 
+
+if there is need to return and without global head
+..............................
+Node *reverse(Node *head)
+{
+Node *p = head;
+Node *q=NULL;
+	if(p==NULL)   return NULL;   //list doesnt exist
+	if(p->next ==  NULL) return p;//list with only one node
+	
+	Node *revHead = reverse(p->next);
+	p->next->next = p;
+	p->next = NULL; 
+	
+return revHead;
+} 
+
+
+]
+Detect loop in a linked list[
+int detectloop(struct node *head)
+{
+    struct node  *slow = head, *fast = head;
+  
+    while (slow && fast && fast->next )
+    {
+        slow = slow->next;
+        fast  = fast->next->next;
+        if (slow == fast)
+        {
+           printf("Found Loop");
+           return 1;
+        }
+    }
+    return 0;
+}
+]
+Detect and Remove Loop in a Linked List[  *read theory*
+
+Distance traveled by fast pointer = 2 * (Distance traveled 
+                                         by slow pointer)
+
+(m + n*x + k) = 2*(m + n*y + k)
+
+Note that before meeting the point shown above, fast
+was moving at twice speed.
+
+x -->  Number of complete cyclic rounds made by 
+       fast pointer before they meet first time
+
+y -->  Number of complete cyclic rounds made by 
+       slow pointer before they meet first time
+
+From above equation, we can conclude below
+
+    m + k = (x-2y)*n
+
+Which means m+k is a multiple of n. 
+So if we start moving both pointers again at same speed such that one pointer (say slow) begins from head node of linked list and other pointer (say fast) begins from meeting point. When slow pointer reaches beginning of linked list (has made m steps). Fast pointer would have made also moved m steps as they are now moving same pace. Since m+k is a multiple of n and fast starts from k, they would meet at the beginning. Can they meet before also? No because slow pointer enters the cycle first time after m steps.
+
+Node *detectAndRemoveLoop(Node *head)
+{
+Node *fast=head;
+Node *slow=head;
+
+while(slow && fast && fast->next)
+{	
+	slow = slow->next;
+	fast = fast->next->next;
+
+	if(slow==fast)
+	{printf("%d %dfound loop\n",slow->data,fast->data);break;}
+}
+
+fast = head;
+while(slow && fast && fast->next)
+{
+	fast = fast->next;
+	slow = slow->next;
+
+	if(slow==fast)
+	{printf("Loop begins at %d\n",fast->data);break;}
+}
+
+while(slow!=fast->next)
+fast = fast->next;
+
+fast->next=NULL;
+}
+]
+Merge two sorted linked lists[
+Node *sortedMerge(Node *a, Node *b)
+{
+Node *res=NULL;  //just to not to modify the given list we're using this res
+
+if(a==NULL && b==NULL) return 0;
+if(a==NULL) return b;
+if(b==NULL) return a;
+
+if(a->data < b->data)
+{
+//sortedMerge(a->next, b);  //ye kisko return karega apni value???? think
+res = a;
+res->next = sortedMerge(a->next, b);
+}
+if(b->data < a->data)
+{
+res = b;
+res->next = sortedMerge(b->next, a);
+}
+return res;
+}
+]
+Generic Linked List in C
+Given a linked list which is sorted, how will you insert in sorted way[  **code samjho?????**
+u can do in simpler way also...
+
+void sortedInsert(struct node** head_ref, struct node* new_node)
+{
+    /* Locate the node before the point of insertion */
+    struct node** current = head_ref;
+    while (*current !=NULL && (*current)->data < new_node->data)
+    {
+      current = &((*current)->next);
+    }
+ 
+    new_node->next = *current;
+    *current = new_node;
+}
+
+]
+Given only a pointer to a node to be deleted in a singly linked list, how do you delete it?[
+Fast solution is to copy the data from the next node to the node to be deleted and delete the next node. Something like following.
+void deleteNode(struct node *node_ptr) 
+{
+    struct node *temp  = node_ptr->next;
+    node_ptr->data  = temp->data;
+    node_ptr->next  = temp->next;
+    free(temp);
+}
+]
+Function to check if a singly linked list is palindrome[
+METHOD 1 (Use a Stack)
+A simple solution is to use a stack of list nodes. This mainly involves three steps.
+1) Traverse the given list from head to tail and push every visited node to stack.
+2) Traverse the list again. For every visited node, pop a node from stack and compare data of popped node with currently visited node.
+3) If all nodes matched, then return true, else false.
+
+Time complexity of above method is O(n), but it requires O(n) extra space. Following methods solve this with constant extra space.
+
+
+METHOD 2 (By reversing the list)
+This method takes O(n) time and O(1) extra space.
+1) Get the middle of the linked list.
+2) Reverse the second half of the linked list.
+3) Check if the first half and second half are identical.
+4) Construct the original linked list by reversing the second half again and attaching it back to the first half
+
+To divide the list in two halves, method 2 of this post is used.
+When number of nodes are even, the first and second half contain exactly half nodes. The challenging thing in this method is to handle the case when number of nodes are odd. We don’t want the middle node as part of any of the lists as we are going to compare them for equality. For odd case, we use a separate variable ‘midnode’.
+
+]
+Intersection point of two Linked Lists.
+Recursive function to print reverse of a Linked List
+Remove duplicates from a sorted linked list
+Remove duplicates from an unsorted linked list
+Pairwise swap elements of a given linked list
+Practice questions for Linked List and Recursion
+Move last element to front of a given Linked List
+Intersection of two Sorted Linked Lists
+Delete alternate nodes of a Linked List
+Alternating split of a given Singly Linked List
+Identical Linked Lists
+Merge Sort for Linked Lists
+Reverse a Linked List in groups of given size[
+Node *reverse(Node *head,int k)
+{
+Node *p= head;
+Node *q= NULL;
+Node *r=NULL;
+
+int count=0;
+if(p==NULL) {printf("No List!\n");exit(0);}
+
+while(p!=NULL && count<k)
+{
+		r = q;
+		q = p;
+		p = p->next;
+		q->next =r;
+
+	count++;
+	
+}
+//humne k tak ke node reverse kr diye. now check k uske aage koi node h k nai
+//if hai then call again same fn
+//and ye k tak ki list reverse ho chuki hogi so link next k-link in the head's link part 
+if(p!=NULL)
+head->next  = reverse(p,k); 	
+
+return q;
+}
+int main()
+{
+int k;
+Node *head = NULL;
+
+insert(&head,1);
+insert(&head,2);
+insert(&head,3);
+insert(&head,4);
+insert(&head,5);
+insert(&head,6);
+insert(&head,7);
+insert(&head,8);
+insert(&head,9);
+
+print_list(head);
+printf("\n");
+
+printf("Enter the value of k: ");
+scanf("%d",&k);
+head = reverse(head,k);		//head me return kiya ***
+print_list(head);
+}
+
+with double pointer
+================================
+Node *reverse(Node **head,int k)
+{
+Node *p= *head;
+Node *q= NULL;
+Node *r=NULL;
+
+int count=0;
+if(p==NULL) {printf("No List!\n");exit(0);}
+
+while(p!=NULL && count<k)
+{
+		r = q;
+		q = p;
+		p = p->next;
+		q->next =r;
+
+	count++;
+	
+}
+//humne k tak k node reverse kr diye. now check k uske aage koi node h k nai
+//if hai then call again same fn
+//and ye k tak ki list reverse ho chuki hogi so link next k-link in the head's link part 
+if(p!=NULL)
+(*head)->next  = reverse(&p,k); 	
+
+return q;
+}
+int main()
+{
+int k;
+Node *head = NULL;
+
+insert(&head,1);
+insert(&head,2);
+insert(&head,3);
+insert(&head,4);
+insert(&head,5);
+insert(&head,6);
+insert(&head,7);
+insert(&head,8);
+insert(&head,9);
+
+print_list(head);
+printf("\n");
+
+printf("Enter the value of k: ");
+scanf("%d",&k);
+head = reverse(&head,k);		//passing address of head
+print_list(head);
+}
+
+
+]
+Reverse alternate K nodes in a Singly Linked List[ ***
+Node *reverseAlternate(Node *head,int k)
+{
+Node *p= head;
+Node *q= NULL;
+Node *r=NULL;
+
+int count=0;
+if(p==NULL) {printf("No List!\n");exit(0);}
+
+//reverse first k nodes
+while(p!=NULL && count<k)
+{
+		r = q;
+		q = p;
+		p = p->next;
+		q->next =r;
+
+		count++;
+}
+
+//now p will be pointing to (k+1)th node
+if(head!=NULL)
+head->next = p;		//now head->next me p daalna hoga kyunki utni list reverse ho chuki hai
+
+//we dont want to reverse next k nodes
+count=0;
+while(count<k-1 && p!=NULL)
+{
+	p = p->next;
+	count++;
+}
+
+if(p!=NULL)
+p->next  = reverseAlternate(p->next,k); 	//ab p ke next me daalenge next reverse list
+
+return q;
+}
+
+]
+Delete nodes which have a greater value on right side
+Segregate even and odd nodes in a Linked List
+Delete a given node in Linked List under given constraints
+Union and Intersection of two Linked Lists
+Find a triplet from three linked lists with sum equal to a given number
+Rotate a Linked List
+Flattening a Linked List
+Add two numbers represented by linked lists | Set 1
+Add two numbers represented by linked lists | Set 2
+Sort a linked list of 0s, 1s and 2s[
+1) Traverse the list and count the number of 0s, 1s and 2s. Let the counts be n1, n2 and n3 respectively.
+2) Traverse the list again, fill the first n1 nodes with 0, then n2 nodes with 1 and finally n3 nodes with 2.
+]
+Flatten a multilevel linked list
+Delete N nodes after M nodes of a linked list
+QuickSort on Singly Linked List
+Merge a linked list into another linked list at alternate positions
+Pairwise swap elements of a given linked list by changing links
+Given a linked list of line segments, remove middle points
+Construct a Maximum Sum Linked List out of two Sorted Linked Lists having some Common nodes
+Can we reverse a linked list in less than O(n)?
+Clone a linked list with next and random pointer | Set 1
+Clone a linked list with next and random pointer | Set 2
+Insertion Sort for Singly Linked List
+Point to next higher value node in a linked list with an arbitrary pointer
+Rearrange a given linked list in-place.
+Sort a linked list that is sorted alternating ascending and descending orders?
+Select a Random Node from a Singly Linked List
+Why Quick Sort preferred for Arrays and Merge Sort for Linked Lists?
+Merge two sorted linked lists such that merged list is in reverse order
+Compare two strings represented as linked lists[ * 
+use fail case first -ie. string equal na hone k cases pehle likho..if all the case fails then automatically equal wala case ho jayega...
+int linkliststrcmp(Node *head1,Node *head2)
+{
+	while(head1 && head2 && head1->data == head2->data)
+	{
+		head1 = head1->next;
+		head2 = head2->next;
+	}
+	if(head1!=NULL && head2!=NULL)  //if both list are nonempty-- compare mismatching char
+	return (head1->data > head2->data)?1:-1;
+
+	//if either of the 2 list has reached the end
+	if(head1!=NULL && head2==NULL) return 1;
+	if(head1==NULL && head2!=NULL) return -1;
+
+	//if none of the above conditions is true ie.both reached to end
+	return 0;  //now return 0--for equal
+}
+]
+Rearrange a linked list such that all even and odd positioned nodes are together
+Rearrange a Linked List in Zig-Zag fashion
+Add 1 to a number represented as linked list
+Point arbit pointer to greatest value right side node in a linked list
+Merge two sorted linked lists such that merged list is in reverse order
+Convert a given Binary Tree to Doubly Linked List | Set
+Check if a linked list of strings forms a palindrome
+Sort linked list which is already sorted on absolute values
+Delete last occurrence of an item from linked list
+Delete a Linked List node at a given position
+Linked List in java
+============================
+Circular Linked List:
+============================
+Circular Linked List Introduction and Applications,
+Circular Linked List Traversal
+Split a Circular Linked List into two halves
+Sorted insert for circular linked list
+============================
+Doubly Linked List:
+============================
+Doubly Linked List Introduction and Insertion
+Delete a node in a Doubly Linked List
+Reverse a Doubly Linked List
+The Great Tree-List Recursion Problem.
+Copy a linked list with next and arbit pointer
+QuickSort on Doubly Linked List
+Swap Kth node from beginning with Kth node from end in a Linked List
+Merge Sort for Doubly Linked List

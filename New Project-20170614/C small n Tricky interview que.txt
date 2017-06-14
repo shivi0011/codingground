@@ -1,0 +1,35 @@
+http://www.cquestions.com/2010/10/c-interview-questions-and-answers.html
+
+Write a c program to find size of structure without using sizeof operator?[
+Explanation:
+struct  ABC{
+    int a;
+    float b;
+    char c;
+};
+int main(){
+    struct ABC *ptr=(struct ABC *)0;	//here we're returing address 0 manually jo ki malloc deta tha jahan par wo memory create krta tha
+    ptr++;
+    printf("Size of structure is: %d",*ptr);   //0 se address start kiya h so ptr++ k baad wo struct ka size bata dega
+    return 0;
+}
+]
+
+
+How segmentation fault occurs? when program access any other program's memory or something else happened.
+[
+]
+
+Structure member always takes contiguous memory. VERIFIED
+
+Implement Queue to Stack[
+QoS ie. Queue to Stack is tuff (as Quality of Service maintain karna tuff hota hai)
+]
+
+Implement Stack to Queue [
+It is simple.. just use 2 Stacks S1 for enQueue and S2 for deQueue.
+Insert always in S1
+Delete always from S2
+thats it.
+
+]

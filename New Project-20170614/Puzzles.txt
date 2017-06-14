@@ -1,0 +1,10 @@
+1. Maximum run a batsman can make in 50 overs.[
+Assumptions: Batsmen can run maximum 3 runs without overthrows. And no ‘No balls’, no ‘Wide balls’
+Answer is 1653.
+Explanation: Batsman can hit 5 sixes and run 3 runs last ball of over to come in strike again for next over. So 6*5 = 30 + 3 = 33 runs in one over.
+Now he can make 33 runs for 49 overs that is 49 * 33 = 1617 runs.
+Now for last over he can hit 6 sixes that is 36 runs.
+Total: 1617 + 36 = 1653 runs max.
+]
+
+

@@ -1,0 +1,22 @@
+
+
+Simula is considered the first object-oriented programming language.
+Pascal is an imperative and procedural programming language. >>Pascal is Procedural<<    
+
+
+
+
+
+If a digital data rate of 9600 bps is encoded using 8-level phase shift keying (8PSK) method, the modulation rate is
+Solution
+8 level phase – 2pow3 signifies 3 bits. So modulation rate = 9600/3 = 3200 bands.
+
+
+====================
+		C++
+====================
+
+C++ compiled binaries run natively on OS level but  Java compiled "bytecode class" files run inside a virtual machine named JVM.  Thus, C++ compiled binaries need to be compiled against a particular OS to port but Java compiled classes can be easily ported between different OS's as long as they have JVM. This is a great feature but also has its own downsides since every single feature that Java has needs to be applicable on each OS. Most important lack of feature caused by this is "Raw Sockets".
+
+C++ is a OOP language like Java but it is possible to write non-OOP code with C++, it allows you to do it but Java doesn't. Java forces you to write OOP code.
+

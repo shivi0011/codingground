@@ -1,0 +1,46 @@
+
+Sites
+-------------------
+geeksforgeeks
+hackerrank
+
+
+videos
+-------------------
+mycodeschool.com
+tushar roy
+
+
+Problems done
+------------
+LinkedList
+
+Running
+------------
+Array
+
+
+
+
+test
+===========
+30 ques +  2 coding que   --- in 1.30 hr
+
+TCS ---- only interview
+
+
+
+Algorithms-Algorithms
+======================================
+October 12, 2016
+Overview
+Please add the resources you think are important as you go
+Treaps :- https://tanujkhattar.wordpress.com/2016/01/10/treaps-one-tree-to-rule-em-all-part-1/
+Advanced DS :-  http://codeforces.com/blog/entry/15729
+RMQ :- https://www.topcoder.com/community/data-science/data-science-tutorials/range-minimum-query-and-lowest-common-ancestor/#Segment_Trees
+Data Structures in competitive Programming :- https://github.com/jeffrey-xiao/Competitive-Programming/tree/master/src/codebook/datastructures
+String Algo :- https://www.topcoder.com/community/data-science/data-science-tutorials/introduction-to-string-searching-algorithms/
+Dynamic Programming :- https://www.topcoder.com/community/data-science/data-science-tutorials/dynamic-programming-from-novice-to-advanced/
+Almost all important Data Structure and Algorithm 
+https://discuss.codechef.com/questions/48877/data-structures-and-algorithms 
+Please add more ….
