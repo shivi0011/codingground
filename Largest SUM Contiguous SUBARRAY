@@ -1,0 +1,28 @@
+#include<stdio.h>
+
+int maxSubArraySum(int a[], int size)
+{
+    int ms = 0, maxE = 0;
+    for (int i = 0; i < size; i++)
+    {
+        maxE = maxE + a[i];
+        if (maxE < 0)
+            maxE = 0;
+        if (ms < maxE)
+            ms = maxE;
+    }
+    return ms;
+}
+or
+int maxSubArraySum(int a[], int size)
+{
+   int ms = a[0];
+   int maxE = a[0];
+ 
+   for (int i = 1; i < size; i++)
+   {
+        maxE = max(a[i], maxE+a[i]);
+        ms = max(ms, maxE);
+   }
+   return ms;
+}
