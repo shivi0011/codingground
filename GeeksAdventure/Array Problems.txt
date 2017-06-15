@@ -34,7 +34,7 @@ Majority Element[	-- which appears more than n/2 times --
 findCandidate(a[], size)
 1.  Initialize index and count of majority element
      maj_index = 0, count = 1
-2.  Loop for i = 1 to size ñ 1
+2.  Loop for i = 1 to size ‚Äì 1
     (a) If a[maj_index] == a[i]
           count++
     (b) Else
@@ -365,7 +365,7 @@ Leaders in an array[
 ]
 Sort elements by frequency | Set 1 -- **
 Count Inversions in an array[ ---Dooo--
-Inversion Count for an array indicates ñ how far (or close) the array is from being sorted. If array is already sorted then inversion count is 0. If array is sorted in reverse order that inversion count is the maximum. 
+Inversion Count for an array indicates ‚Äì how far (or close) the array is from being sorted. If array is already sorted then inversion count is 0. If array is sorted in reverse order that inversion count is the maximum. 
 Formally speaking, two elements a[i] and a[j] form an inversion if a[i] > a[j] and i < j
 ]
 Two elements whose sum is closest to zero
@@ -439,11 +439,11 @@ bool isMajority(int arr[], int n, int x)
     return 0;
 }
 
-Using Mooreís Voting Algorithm
+Using Moore‚Äôs Voting Algorithm
 findCandidate(a[], size)
 1.  Initialize index and count of majority element
      maj_index = 0, count = 1
-2.  Loop for i = 1 to size ñ 1
+2.  Loop for i = 1 to size ‚Äì 1
     (a) If a[maj_index] == a[i]
           count++
     (b) Else
@@ -458,7 +458,7 @@ Segregate 0s and 1s in an array[
 Method 1 (Count 0s or 1s) 
 Thanks to Naveen for suggesting this method.
 1) Count the number of 0s. Let count be C.
-2) Once we have count, we can put C 0s at the beginning and 1s at the remaining n ñ C positions in array.
+2) Once we have count, we can put C 0s at the beginning and 1s at the remaining n ‚Äì C positions in array.
 Time Complexity: O(n)
 
 The method 1 traverses the array two times. Method 2 does the same in a single pass.
@@ -693,19 +693,19 @@ Linked List vs Array
 Which sorting algorithm makes minimum number of memory writes?[
 Minimizing the number of writes is useful when making writes to some huge data set is very expensive, such as with EEPROMs or Flash memory, where each write reduces the lifespan of the memory.
 
-Selection Sort makes least number of writes (it makes O(n) swaps).  But, Cycle Sort almost always makes less number of writes compared to Selection Sort.  In Cycle Sort, each value is either written zero times if itís already in its correct position, or written one time to its correct position. This matches the minimal number of overwrites required for a completed in-place sort.
+Selection Sort makes least number of writes (it makes O(n) swaps).  But, Cycle Sort almost always makes less number of writes compared to Selection Sort.  In Cycle Sort, each value is either written zero times if it‚Äôs already in its correct position, or written one time to its correct position. This matches the minimal number of overwrites required for a completed in-place sort.
 ]
 Turn an image by 90 degree
 Check if array elements are consecutive | Added Method 3
 Find the smallest missing number
 Count the number of occurrences in a sorted array
 Interpolation search vs Binary search
-Given an array arr[], find the maximum j ñ i such that arr[j] > arr[i]
+Given an array arr[], find the maximum j ‚Äì i such that arr[j] > arr[i]
 Maximum of all subarrays of size k (Added a O(n) method)
 Find whether an array is subset of another array | Added Method 3
 Find the minimum distance between two numbers
 Find the repeating and the missing | Added 3 new methods[  *
-Given an unsorted array of size n. Array elements are in range from 1 to n. One number from set {1, 2, Ön} is missing and one number occurs twice in array. Find these two numbers.
+Given an unsorted array of size n. Array elements are in range from 1 to n. One number from set {1, 2, ‚Ä¶n} is missing and one number occurs twice in array. Find these two numbers.
 
 Examples:
 
@@ -754,11 +754,11 @@ Calculate XOR of all the array elements.
 XOR the result with all numbers from 1 to n
 
      xor1 = xor1^1^2^.....^n
-In the result xor1, all elements would nullify each other except x and y. All the bits that are set in xor1 will be set in either x or y. So if we take any set bit (We have chosen the rightmost set bit in code) of xor1 and divide the elements of the array in two sets ñ one set of elements with same bit set and other set with same bit not set. By doing so, we will get x in one set and y in another set. Now if we do XOR of all the elements in first set, we will get x, and by doing same in other set we will get y.
+In the result xor1, all elements would nullify each other except x and y. All the bits that are set in xor1 will be set in either x or y. So if we take any set bit (We have chosen the rightmost set bit in code) of xor1 and divide the elements of the array in two sets ‚Äì one set of elements with same bit set and other set with same bit not set. By doing so, we will get x in one set and y in another set. Now if we do XOR of all the elements in first set, we will get x, and by doing same in other set we will get y.
 
 Time Complexity: O(n)
 
-This method doesnít cause overflow, but it doesnít tell which one occurs twice and which one is missing. We can add one more step that checks which one is missing and which one is repeating. This can be easily done in O(n) time.
+This method doesn‚Äôt cause overflow, but it doesn‚Äôt tell which one occurs twice and which one is missing. We can add one more step that checks which one is missing and which one is repeating. This can be easily done in O(n) time.
 ]
 Median in a stream of integers (running integers)
 Find a Fixed Point in a given array
@@ -1132,19 +1132,19 @@ Sort an array according to the order defined by another array
 Maximum Sum Path in Two Arrays
 Check if a given array contains duplicate elements within k distance from each other
 Sort an array in wave form
-Kíth Smallest/Largest Element in Unsorted Array
-Kíth Smallest/Largest Element in Unsorted Array in Expected Linear Time
-Kíth Smallest/Largest Element in Unsorted Array in Worst Case Linear Time
+K‚Äôth Smallest/Largest Element in Unsorted Array
+K‚Äôth Smallest/Largest Element in Unsorted Array in Expected Linear Time
+K‚Äôth Smallest/Largest Element in Unsorted Array in Worst Case Linear Time
 Find Index of 0 to be replaced with 1 to get longest continuous sequence of 1s in a binary array
 Find the closest pair from two sorted arrays
 Given a sorted array and a number x, find the pair in array whose sum is closest to x
-Count 1ís in a sorted binary array
+Count 1‚Äôs in a sorted binary array
 Print All Distinct Elements of a given integer array
 Construct an array from its pair-sum array
 Find common elements in three sorted arrays
 Find the first repeating element in an array of integers
 Find the smallest positive integer value that cannot be represented as sum of any subset of a given array
-Rearrange an array such that ëarr[j]í becomes ëií if ëarr[i]í is ëjí--[
+Rearrange an array such that ‚Äòarr[j]‚Äô becomes ‚Äòi‚Äô if ‚Äòarr[i]‚Äô is ‚Äòj‚Äô--[
 Given an array of size n where all elements are in range from 0 to n-1, change contents of arr[] so that arr[i] = j is changed to arr[j] = i.
 void rearrange(int a[], int n)
 {
@@ -1337,7 +1337,7 @@ return 0;
 }
 ] 
 
-Find zeroes to be flipped so that number of consecutive 1ís is maximized  
+Find zeroes to be flipped so that number of consecutive 1‚Äôs is maximized  
 Count triplets with sum smaller than a given value [ *** Srivastav
 void countTriplet(int a[],int n,int sum)
 {
@@ -1932,7 +1932,7 @@ Maximum size square sub-matrix with all 1s
 Inplace M x N size matrix transpose | Updated
 Print Matrix Diagonally
 Dynamic Programming | Set 27 (Maximum sum rectangle in a 2D matrix)
-Strassenís Matrix Multiplication
+Strassen‚Äôs Matrix Multiplication
 Create a matrix with alternating rectangles of O and X
 Find the row with maximum number of 1s in a row sorted 2D array[ **
 Given a boolean 2D array, where each row is sorted. Find the row with the maximum number of 1s.
@@ -2000,8 +2000,8 @@ Below is O(m+n)	 -- go for this ****
 
 Step1: Get the index of first (or leftmost) 1 in the first row.
 Step2: Do following for every row after the first row
-ÖIF the element on left of previous leftmost 1 is 0, ignore this row.
-ÖELSE Move left until a 0 is found. Update the leftmost index to this index and max_row_index to be the current row.
+‚Ä¶IF the element on left of previous leftmost 1 is 0, ignore this row.
+‚Ä¶ELSE Move left until a 0 is found. Update the leftmost index to this index and max_row_index to be the current row.
 
 The time complexity is O(m+n) because we can possibly go as far left as we came ahead in the first step.
 
@@ -2037,10 +2037,10 @@ int rowWithMax1s(bool mat[R][C])
 Print all elements in sorted order from row and column wise sorted matrix
 Given an n x n square matrix, find sum of all sub-squares of size k x k
 Count number of islands where every island is row-wise and column-wise separated
-Given a matrix of ëOí and ëXí, replace ëOí with ëXí if surrounded by ëXí
+Given a matrix of ‚ÄòO‚Äô and ‚ÄòX‚Äô, replace ‚ÄòO‚Äô with ‚ÄòX‚Äô if surrounded by ‚ÄòX‚Äô
 Find the longest path in a matrix with given constraints
-Given a Boolean Matrix, find k such that all elements in kíth row are 0 and kíth column are 1.
-Find the largest rectangle of 1ís with swapping of columns allowed
+Given a Boolean Matrix, find k such that all elements in k‚Äôth row are 0 and k‚Äôth column are 1.
+Find the largest rectangle of 1‚Äôs with swapping of columns allowed
 Validity of a given Tic-Tac-Toe board configuration
 Minimum Initial Points to Reach Destination
 Find length of the longest consecutive path from a given starting character
@@ -2071,7 +2071,7 @@ Return previous element in an expanding matrix
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::STRING:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 Given a string, find its first non-repeating character[  Mostly asked **DO IT**
-Given a string, find the first non-repeating character in it. For example, if the input string is ìGeeksforGeeksî, then output should be ëfí and if input string is ìGeeksQuizî, then output should be ëGí.
+Given a string, find the first non-repeating character in it. For example, if the input string is ‚ÄúGeeksforGeeks‚Äù, then output should be ‚Äòf‚Äô and if input string is ‚ÄúGeeksQuiz‚Äù, then output should be ‚ÄòG‚Äô.
 
 Naive approach:
 
@@ -2082,7 +2082,7 @@ Naive approach:
  
  Can we do it by traversing the string only once?
 The above approach takes O(n) time, but in practice it can be improved. The first part of the algorithm runs through the string to construct the count array (in O(n) time). This is reasonable. But the second part about running through the string again just to find the first non-repeater is not good in practice. In real situations, your string is expected to be much larger than your alphabet. Take DNA sequences for example: they could be millions of letters long with an alphabet of just 4 letters. What happens if the non-repeater is at the end of the string? Then we would have to scan for a long time (again).
-We can augment the count array by storing not just counts but also the index of the first time you encountered the character e.g. (3, 26) for ëaí meaning that ëaí got counted 3 times and the first time it was seen is at position 26. So when it comes to finding the first non-repeater, we just have to scan the count array, instead of the string. 
+We can augment the count array by storing not just counts but also the index of the first time you encountered the character e.g. (3, 26) for ‚Äòa‚Äô meaning that ‚Äòa‚Äô got counted 3 times and the first time it was seen is at position 26. So when it comes to finding the first non-repeater, we just have to scan the count array, instead of the string. 
  
 ]
 
