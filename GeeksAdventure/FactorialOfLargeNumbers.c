@@ -1,3 +1,17 @@
+/*
+How do we store a number in the array, and why do we store it the way we do?
+
+If after reading this tutorial you look at some of the accepted solutions in C/C++ for this problem, you will see that contestants actually stored the numbers "backwards", for example:
+
+123 would be saved in an array, say a, as:
+
+a = [3,2,1];
+
+This is done such that when the digit by digit calculations are being performed, the "carry" can be placed on the positions of the array with higher index. This way, we are sure that carry is computed and placed correctly on the array.
+
+Also, computing the products this way and maintaining the variable, m, allows us to print the result directly, by looping from a[m-1] until a[0].
+*/
+
 #include<stdio.h>
 int main()
 {
