@@ -14,7 +14,7 @@
     int main()
     {
     int n=5;
-    printf("Enter value of n : \n");
+    printf("Enter value of n : ");
 
     scanf("%d",&n);
     findfact(n);
