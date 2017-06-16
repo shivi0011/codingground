@@ -7,8 +7,27 @@ Programs :
 5. Write a program to swap two numbers using bitwise operators.
 6. Write a program to find the greatest of three numbers.
 7. Write a program to find the greatest among ten numbers.
-8. Write a program to check whether the given number is a prime.
-9. Write a program to check whether the given number is a palindrome c number.
+8. Write a program to check whether the given number is a prime.  --number must not hv any divisor. check till UnderRoot n only
+
+9. Write a program to check whether the given number is a palindrome c number. -- make reverse and compare with that
+#include <stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+int main()
+{
+   int a = 12321;
+   char b[6];
+   /*Int to String conversion*/
+   sprintf(b,"%d",a);
+   //printf("%s",b);
+   int len = strlen(b);
+   printf("\n%d\n",len);
+   return 0;
+}
+
+
+
 10.Write a program to check whether the given string is a palindrome .
 11.Write a program to generate the Fibonacci series.
 12.Write a program to print"Hello World"without using semicolon anywhere in the code.
@@ -344,6 +363,7 @@ i.e. c=2
 here i value is 6 and 6
 now if(c==2) then n is a prime number
 we have c=2 from the 5th iteration and thus n=5 is a Prime number.
+
 9. Write a program to check whether the given number is a palindromi c number.
 If a number, which when read in both forward and backward way is same, then such a number is called a
 palindrome number.
