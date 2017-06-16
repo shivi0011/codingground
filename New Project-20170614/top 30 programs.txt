@@ -59,6 +59,31 @@ valid input.
 26.WAP to print the triangle of letters in increasing order of lines..
 27.WAP to print'xay'in place of every'a'in a string.// DOC Update on 24-jan-12.
 28.Count the Total Number of 7 comming between 1 to 100.
+
+#include<stdio.h>
+
+int count8(int from, int to) 
+{
+    int i, count = 0;
+    for (i = from; i <= to; i++) {
+        int j = i;
+        while (j > 0) {
+            if (j % 10 == 8)
+                count++;
+            j /= 10;
+        }
+    }
+    return count;
+}
+
+int main()
+{
+    printf("%d\n",count8(1,100));
+    return 0;
+    
+}
+
+
 /* I made this code in a way that u can give Upper limit i.e. 100,Lower limit i.e. 1 and the specific number u wants to count in between i.e. 7 */ // asked by: Vishwa Pratap Rana..
 29. Code for duplicate' s removal,by Amit Aru.. // Similar question was asked in Maventic 2nd round to me,,
 30. WAP to find out if a given number is a power series of 2 or not,withou t any loop and without using % modulo operator.. // asked by someone on BJS..
