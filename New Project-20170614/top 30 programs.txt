@@ -16,16 +16,26 @@ Programs :
 
 int main()
 {
-   int a = 12321;
+   int a = 10;
    char b[6];
    /*Int to String conversion*/
    sprintf(b,"%d",a);
    //printf("%s",b);
    int len = strlen(b);
-   printf("\n%d\n",len);
+   int i,start = 0,flag=0;
+   int end = len-1;
+   while(start<end)
+   {
+       if(b[start]!=b[end])
+       flag=1;
+       start++;end--;
+   }
+   if(flag==1)
+   printf("not palindrome\n");
+   else
+   printf("Palindrome\n");
    return 0;
 }
-
 
 
 10.Write a program to check whether the given string is a palindrome .
