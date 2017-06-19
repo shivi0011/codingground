@@ -80,7 +80,7 @@ int main(void)
             scanf("%d",&A[i][j]);
         }
     }
-    printf("Enter values for matrix A: \n");
+    printf("Enter values for matrix B: \n");
     
     for(i=0;i<m;i++)
     {
