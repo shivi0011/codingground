@@ -1,9 +1,21 @@
 #include <stdio.h>
+#include<stdlib.h>
 
 int main(void)
 {
     int i,j,m=3,n=3;
-    int A[m][n],B[m][n];
+    //int A[m][n],B[m][n];
+    int *A[3],*B[3],*C[3],*D[3],*E[3];
+    
+    for(i=0;i<3;i++)
+    {
+        A[i] = (int *)malloc(sizeof(int)*3);
+        B[i] = (int *)malloc(sizeof(int)*3);
+        C[i] = (int *)malloc(sizeof(int)*3);
+        D[i] = (int *)malloc(sizeof(int)*3);
+        E[i] = (int *)malloc(sizeof(int)*3);
+        
+    }
     printf("Enter values for matrix A: \n");
     
     for(i=0;i<m;i++)
@@ -45,7 +57,7 @@ int main(void)
         printf("\n");
     }
     
-    int C[m][n];
+    //int C[m][n];
     /*Matrix Addition*/
     for(i=0;i<m;i++)
     {
@@ -64,7 +76,7 @@ int main(void)
         printf("\n");
     }
     
-    int D[m][n];
+    //int D[m][n];
     /*Matrix Subtraction*/
     for(i=0;i<m;i++)
     {
@@ -83,7 +95,8 @@ int main(void)
         printf("\n");
     }
 
-    int E[m][n],k;
+    //int E[m][n];
+    int k;
     /*Matrix Multiplication*/
         for(i=0;i<m;i++)
         {
@@ -106,5 +119,3 @@ int main(void)
 
     return 0;
 }
-
-
