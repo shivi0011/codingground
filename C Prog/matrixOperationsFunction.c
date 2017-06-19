@@ -39,11 +39,26 @@ void matrixMul(int *A[3],int *B[3], int *E[3],int m, int n)
         }
 }        
 
+void matrixTranspose(int *A[3],int *F[3], int m,int n)
+{
+    int i,j;
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            F[i][j] = A[j][i];    
+        }
+    }
+    
+    
+    
+}
+
 int main(void)
 {
     int i,j,m=3,n=3;
     //int A[m][n],B[m][n];
-    int *A[m],*B[m],*C[m],*D[m],*E[m];
+    int *A[m],*B[m],*C[m],*D[m],*E[m], *F[m];
     
     for(i=0;i<3;i++)
     {
@@ -52,6 +67,7 @@ int main(void)
         C[i] = (int *)malloc(sizeof(int)*n);
         D[i] = (int *)malloc(sizeof(int)*n);
         E[i] = (int *)malloc(sizeof(int)*n);
+        F[i] = (int *)malloc(sizeof(int)*n);
         
     }
     printf("Enter values for matrix A: \n");
@@ -134,5 +150,15 @@ int main(void)
         printf("\n");
     }
 
+    matrixTranspose(A,F,m,n);
+    printf(":::::Transpose of Matrix:::::::\n");
+    for(i=0;i<m;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            printf("%d ",F[i][j]);
+        }
+        printf("\n");
+    }
     return 0;
 }
