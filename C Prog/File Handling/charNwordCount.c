@@ -14,8 +14,8 @@ int main()
             if(ch==' ' || ch=='\n') wc++;
             else ccount++;
         
-            ch = fgetc(fp);         //mistake... u need to again take the next char..
-        }
+            ch = fgetc(fp);         //mistake... u need to again take the next char..or just use for version
+        }                           // for(ch=fgetc(fp);ch!=EOF;ch=fgetc(fp))
     }
     printf("Character count = %d\n",ccount);
     printf("Word count = %d\n",wc);
