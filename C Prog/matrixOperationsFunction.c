@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include<stdlib.h>
 
-void matrixAddition(int *A[3],int *B[3], int *C[3],int m, int n)
+void matrixAddition(int **A,int **B, int **C,int m, int n)
 {
     int i,j;
     for(i=0;i<m;i++)
@@ -13,7 +13,7 @@ void matrixAddition(int *A[3],int *B[3], int *C[3],int m, int n)
     }
 }
 
-void matrixSubtraction(int *A[3],int *B[3], int *D[3],int m, int n)
+void matrixSubtraction(int **A,int **B, int **D,int m, int n)
 {
     int i,j;
     for(i=0;i<m;i++)
@@ -25,7 +25,7 @@ void matrixSubtraction(int *A[3],int *B[3], int *D[3],int m, int n)
         }
 }
 
-void matrixMul(int *A[3],int *B[3], int *E[3],int m, int n)
+void matrixMul(int **A,int **B, int **E,int m, int n)
 {
     int i,j,k;
         for(i=0;i<m;i++)
@@ -39,7 +39,7 @@ void matrixMul(int *A[3],int *B[3], int *E[3],int m, int n)
         }
 }        
 
-void matrixTranspose(int *A[3],int *F[3], int m,int n)
+void matrixTranspose(int **A,int **F, int m,int n)
 {
     int i,j;
     for(i=0;i<m;i++)
@@ -56,11 +56,20 @@ void matrixTranspose(int *A[3],int *F[3], int m,int n)
 
 int main(void)
 {
-    int i,j,m=3,n=3;
-    //int A[m][n],B[m][n];
-    int *A[m],*B[m],*C[m],*D[m],*E[m], *F[m];
+    int i,j,m,n;
+    printf("Enter row index : ");
+    scanf("%d",&m);
+    printf("Enter col index : ");
+    scanf("%d",&n);
+    int **A,**B,**C,**D,**E,**F;
+    A = (int **)malloc(sizeof(int *)*n);
+    B = (int **)malloc(sizeof(int *)*n);
+    C = (int **)malloc(sizeof(int *)*n);
+    D = (int **)malloc(sizeof(int *)*n);
+    E = (int **)malloc(sizeof(int *)*n);
+    F = (int **)malloc(sizeof(int *)*n);
     
-    for(i=0;i<3;i++)
+    for(i=0;i<m;i++)
     {
         A[i] = (int *)malloc(sizeof(int)*n);
         B[i] = (int *)malloc(sizeof(int)*n);
