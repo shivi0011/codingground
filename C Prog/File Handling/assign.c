@@ -7,7 +7,7 @@
 int main()
 {
    char line[R][L];
-   int totLines,i=0;
+   int count=0,totLines,i=0;
    FILE *fp;
    fp = fopen("test.txt","r");
    if(fp==NULL)printf("Error in opening file!!\n");
@@ -34,14 +34,16 @@ int main()
                         j++;    //then need to increment both
                         if(word[k+1]=='\0')
                         {
-                            printf("word \"%s\" found at %dth position in %drd line of file\n",word,j-wlen+1,i+1);
+                            printf("word \"%s\" found at %d position in %d line of file\n",word,j-wlen+1,i+1);
                             found=1;
+                            count++;
                         }
                    }
                }
            }
            i++;         //to count number of lines in file so that we can use for printing
        }
+       printf("Total %d counts are found for \"%s\"\n",count,word);
        if(found==0)
        printf("word \"%s\" not found!!\n",word);
        totLines = i;
