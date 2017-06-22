@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include<string.h>
+#include <string.h>
 
 #define R 10      //Rows or lines
 #define L 128     //max length of one line 
@@ -18,7 +18,7 @@ int main()
        scanf("%s",word);
        int found=0,wlen = strlen(word);
        
-       while(fgets(line[i],L,fp))     //this line copying the content line by line pointed by fp to line array
+       while(fgets(line[i],L,fp)) //this line is copying the content line by line pointed to by fp to line array
        {
            int j,k=0,len = strlen(line[i]);
            line[i][len - 1] = '\0';   //and at last we need to append the NULL
@@ -40,15 +40,16 @@ int main()
                    }
                }
            }
-           i++;                                   //to count number of lines in file so that we can use for printing
+           i++;         //to count number of lines in file so that we can use for printing
        }
        if(found==0)
        printf("word \"%s\" not found!!\n",word);
        totLines = i;
        
-       //for(i=0;i<totLines;i++)
-       //printf("%s\n",line[i]);
-       
+       /* to print the lines of file
+       for(i=0;i<totLines;i++)
+       printf("%s\n",line[i]);
+       */
        fclose(fp);
    }
     return 0;
