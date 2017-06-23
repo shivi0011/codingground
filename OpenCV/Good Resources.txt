@@ -3,5 +3,6 @@ http://docs.opencv.org/2.4/doc/tutorials/tutorials.html
 opencv-srf.blogspot.com
 aishack.in
 
+http://answers.opencv.org/question/3639/subtract-from-white-invert/
 
 intorobotics.com
