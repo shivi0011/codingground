@@ -18,6 +18,7 @@ int main(void)
         fclose(fp2);
         fp2 = fopen("newTest.txt","r");
    
+       /*Just printing*/
        for(ch=fgetc(fp2);ch!=EOF;ch=fgetc(fp2))
         {
              //printf("%c",ch);        //both are same
