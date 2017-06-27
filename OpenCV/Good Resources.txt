@@ -10,5 +10,7 @@ http://www.cs.iit.edu/~agam/cs512/lect-notes/opencv-intro/opencv-intro.html#SECT
 http://www.pages.drexel.edu/~nk752/tutorials.html
 http://opencvexamples.blogspot.com/p/learning-opencv-functions-step-by-step.html     --- good
 http://www.bogotobogo.com/cplusplus/opencv.php
+http://opencv-tutorials-hub.blogspot.in/                -- good
+
 
 intorobotics.com
