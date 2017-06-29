@@ -28,3 +28,6 @@ int main()
 
 
 http://www.dreamincode.net/forums/topic/29852-how-to-read-and-write-file-image-bmpjpgico-and-so-on-using-c/
+https://www.codingunit.com/c-tutorial-binary-file-io
+http://paulbourke.net/dataformats/bitmaps/
+http://www.sanfoundry.com/c-program-compare-two-binary-files/
