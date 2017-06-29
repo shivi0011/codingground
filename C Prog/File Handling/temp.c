@@ -164,3 +164,6 @@ int main (int argc , char * argv [] ){
 
         return 0;
 }
+
+http://www.linuxquestions.org/questions/programming-9/c-howto-read-binary-file-into-buffer-172985/
+https://stackoverflow.com/questions/39823509/inverting-colors-of-pixels-in-a-bmp-file-in-c
