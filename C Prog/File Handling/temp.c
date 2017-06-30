@@ -250,3 +250,8 @@ contact.
 
 
 http://www.iu.hio.no/~mark/CTutorial/CTutorial.html#Files%20and%20Devices   - COMPLETE C Book *****
+
+http://www.cplusplus.com/forum/general/30215/           MUST GOOooooo
+https://www.codingunit.com/c-tutorial-deleting-a-record-from-a-binary-file      -- Goood
+https://rakanalysis.wordpress.com/2012/04/27/566/           -- Goooood   Besttt
+
