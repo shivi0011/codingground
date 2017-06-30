@@ -1,0 +1,54 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main (int argc , char * argv [] ){
+
+        // argv[1] = 1.jpg
+
+        FILE *fp1;
+        FILE *fp2;
+        unsigned char *buffer;
+        unsigned long fileLen;
+
+        //Open file
+        fp1 = fopen("black.jpeg", "rb");
+        if (!fp1)
+        {
+                //fprintf(stderr, "Unable to open file %s", argv[1]);
+                return;
+        }
+        fp2 = fopen("temp.bmp","wb");
+        if(fp1==NULL){printf("Error in opening the file!");return;}
+        //Get file length
+        //fseek(file, 0, SEEK_END);
+        //fileLen=ftell(file);
+        //fseek(file, 0, SEEK_SET);
+
+        //Allocate memory
+        //buffer=(char *)malloc(fileLen);
+        /*if (!buffer)
+        {
+                fprintf(stderr, "Memory error!");
+                                fclose(file);
+                return 1;
+        }*/
+       
+       char a;
+       while(1)
+       {
+           a = fgetc(fp1);
+           if(!feof(fp1))
+           {
+              
+              //printf("%d ",255-a);
+               //if(a == '\n')
+               //{printf("new ");fputc(a,fp2);}
+              
+               //else 
+                fputc((char)(255-a),fp2);
+           }
+           else
+           break;
+       }
+        return 0;
+}
