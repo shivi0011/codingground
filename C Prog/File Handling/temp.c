@@ -246,3 +246,7 @@ http://www.iwriteiam.nl/Ha_HTCABFF.html -- for basics of binary file intrnals
 
 clairvoyant- a person who claims to have a supernatural ability to perceive events in the future or beyond normal sensory 
 contact.
+
+
+
+http://www.iu.hio.no/~mark/CTutorial/CTutorial.html#Files%20and%20Devices   - COMPLETE C Book *****
