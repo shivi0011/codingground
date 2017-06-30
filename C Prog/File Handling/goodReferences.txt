@@ -3,3 +3,6 @@ http://www.w3resource.com/c-programming-exercises/file-handling/index.php
 http://cse.iitkgp.ac.in/~ppd/course/pds/Lect-27-File-CmdLine.pdf
 
 https://www.programiz.com/cpp-programming#learn-cpp-tutorial
+
+https://halls-of-valhalla.org/beta/codes/program-to-create-add-modify-delete-display-search-in-binary-file,72/
+https://www.codingunit.com/c-tutorial-copying-a-file-in-c
