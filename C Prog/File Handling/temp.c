@@ -237,3 +237,12 @@ int main (int argc , char * argv [] ){
 
 http://www.linuxquestions.org/questions/programming-9/c-howto-read-binary-file-into-buffer-172985/
 https://stackoverflow.com/questions/39823509/inverting-colors-of-pixels-in-a-bmp-file-in-c
+
+
+http://paulbourke.net/dataformats/reading/
+https://stackoverflow.com/questions/9296059/read-pixel-value-in-bmp-file
+http://www.iwriteiam.nl/Ha_HTCABFF.html -- for basics of binary file intrnals
+
+
+clairvoyant- a person who claims to have a supernatural ability to perceive events in the future or beyond normal sensory 
+contact.
