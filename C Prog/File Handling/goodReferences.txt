@@ -6,3 +6,10 @@ https://www.programiz.com/cpp-programming#learn-cpp-tutorial
 
 https://halls-of-valhalla.org/beta/codes/program-to-create-add-modify-delete-display-search-in-binary-file,72/
 https://www.codingunit.com/c-tutorial-copying-a-file-in-c
+
+
+
+
+
+
+http://www.dreamincode.net/forums/topic/170054-understanding-and-reading-binary-files-in-c/
