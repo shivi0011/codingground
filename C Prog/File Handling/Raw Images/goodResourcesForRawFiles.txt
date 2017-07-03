@@ -4,3 +4,7 @@ http://eeweb.poly.edu/~yao/EL5123/SampleData.html
 
 
 http://www.imageprocessingplace.com/root_files_V3/tutorials.htm  ---- image processing many tutorials
+
+http://paulbourke.net/dataformats/bmp/  --- code for BMP images is also there in c
+
+http://www.daubnet.com/en/file-format-bmp
