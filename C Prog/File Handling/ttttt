@@ -52,3 +52,26 @@ int main (int argc , char * argv [] ){
        }
         return 0;
 }
+
+
+
+
+============================find error===================================================
+        int i=0;
+        fp2 = fopen("newFile.bmp","wb");
+        for(ch = fgetc(fp1);ch!=feof(fp1);ch=fgetc(fp1),i++)
+        {
+            if(i>150)
+            {
+                if(ch == 0)
+                {
+                    unsigned char g = 0xff;
+                
+                    fputc(g,fp2);
+                }
+                else if(ch==255)
+                    fputc(0,fp2);
+                    
+                else 
+                    continue;
+            }
