@@ -256,3 +256,5 @@ https://www.codingunit.com/c-tutorial-deleting-a-record-from-a-binary-file      
 https://rakanalysis.wordpress.com/2012/04/27/566/           -- Goooood   Besttt  ************************
 http://computer.howstuffworks.com/c39.htm
 http://www.differencebetween.info/difference-between-8-bit-and-16-bit-color
+https://www.codeproject.com/Articles/72002/Displaying-Raw-Images-Using-WPF   --- code in java
+
