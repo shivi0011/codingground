@@ -59,7 +59,7 @@ int main (int argc , char * argv [] ){
 ============================find error===================================================
         int i=0;
         fp2 = fopen("newFile.bmp","wb");
-        for(ch = fgetc(fp1);ch!=feof(fp1);ch=fgetc(fp1),i++)
+        for(ch = fgetc(fp1);!feof(fp1);ch=fgetc(fp1),i++)
         {
             if(i>150)
             {
@@ -71,7 +71,7 @@ int main (int argc , char * argv [] ){
                 }
                 else if(ch==255)
                     fputc(0,fp2);
-                    
-                else 
-                    continue;
+               
             }
+            fputc(ch,fp2);
+        }
