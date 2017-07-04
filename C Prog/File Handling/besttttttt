@@ -1,5 +1,6 @@
 https://cboard.cprogramming.com/c-programming/91005-problem-reading-8-bit-greyscale-images.html
 
+https://stackoverflow.com/questions/30556656/understanding-and-getting-info-of-bitmap-in-c
 
 #include <stdio.h>
 #include <stdlib.h>
