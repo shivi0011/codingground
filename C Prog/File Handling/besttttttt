@@ -2,6 +2,29 @@ https://cboard.cprogramming.com/c-programming/91005-problem-reading-8-bit-greysc
 
 https://stackoverflow.com/questions/30556656/understanding-and-getting-info-of-bitmap-in-c
 
+http://www.fileformat.info/format/bmp/egff.htm
+http://www.fileformat.info/mirror/egff/ch03_04.htm
+http://www.dragonwins.com/domains/getteched/bmp/bmpfileformat.htm#The%20Pixel%20Data
+https://www.osram-os.com/Graphics/XPic9/00030916_0.pdf/Bitmap%20File%20Format%20and%20Manipulation.pdf  -- BEST BMP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
