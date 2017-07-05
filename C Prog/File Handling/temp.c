@@ -27,16 +27,7 @@ int main()
 
 
 
-http://www.dreamincode.net/forums/topic/29852-how-to-read-and-write-file-image-bmpjpgico-and-so-on-using-c/
-https://www.codingunit.com/c-tutorial-binary-file-io
-http://paulbourke.net/dataformats/bitmaps/
-http://www.sanfoundry.com/c-program-compare-two-binary-files/
-https://stackoverflow.com/questions/31237870/reading-a-jpeg-file-byte-by-byte
 
-http://www.it.uc3m.es/abel/as/MMC/L2/FilesDef_en.html
-
-
-https://stackoverflow.com/questions/39823509/inverting-colors-of-pixels-in-a-bmp-file-in-c        ---gooood---
 
 how can i read any image byte by byte in c file handling
 
@@ -233,28 +224,3 @@ int main (int argc , char * argv [] ){
 
         return 0;
 }
-
-
-http://www.linuxquestions.org/questions/programming-9/c-howto-read-binary-file-into-buffer-172985/
-https://stackoverflow.com/questions/39823509/inverting-colors-of-pixels-in-a-bmp-file-in-c
-
-
-http://paulbourke.net/dataformats/reading/
-https://stackoverflow.com/questions/9296059/read-pixel-value-in-bmp-file
-http://www.iwriteiam.nl/Ha_HTCABFF.html -- for basics of binary file intrnals
-
-
-clairvoyant- a person who claims to have a supernatural ability to perceive events in the future or beyond normal sensory 
-contact.
-
-
-
-http://www.iu.hio.no/~mark/CTutorial/CTutorial.html#Files%20and%20Devices   - COMPLETE C Book *****
-
-http://www.cplusplus.com/forum/general/30215/           MUST GOOooooo
-https://www.codingunit.com/c-tutorial-deleting-a-record-from-a-binary-file      -- Goood
-https://rakanalysis.wordpress.com/2012/04/27/566/           -- Goooood   Besttt  ************************
-http://computer.howstuffworks.com/c39.htm
-http://www.differencebetween.info/difference-between-8-bit-and-16-bit-color
-https://www.codeproject.com/Articles/72002/Displaying-Raw-Images-Using-WPF   --- code in java
-
