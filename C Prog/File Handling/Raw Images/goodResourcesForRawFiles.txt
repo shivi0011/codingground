@@ -1,3 +1,5 @@
+https://stackoverflow.com/questions/1531268/getting-rgb-values-for-each-pixel-from-a-24bpp-bitmap-for-conversion-to-gba-form Gooooood
+
 https://www.tutorialspoint.com/dip/pixel_resolution.htm   ---- Padho
 
 http://eeweb.poly.edu/~yao/EL5123/SampleData.html
