@@ -1,0 +1,6 @@
+http://setosa.io/ev/image-kernels/
+https://github.com/petermlm/SobelFilter/tree/master/src
+http://cis.k.hosei.ac.jp/~wakahara/sobel.c
+https://cboard.cprogramming.com/c-programming/165036-sobel-edge-detection.html  -----
+
+http://www.programming-techniques.com/2013/03/sobel-and-prewitt-edge-detector-in-c.html
