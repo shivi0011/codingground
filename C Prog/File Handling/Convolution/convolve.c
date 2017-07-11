@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include<stdlib.h>
+#include<malloc.h>
 
 #define r 512
 #define c 512
@@ -35,17 +36,25 @@ int main()
         if(buff == NULL)
         {printf("Error in malloc!!");exit(0);}
         
+      
         
-           
        for(i=0;i<r;i++)
        {
            for(j=0;j<c;j++)
            {
-               fread(&buff[i],r,1,fp1);
+               fread(&buff[i][j],r,1,fp1);  // try changing r to 1
+           }
+       }
+       
+       for(i=0;i<r-1;i++)
+       {
+           for(j=0;j<c-1;j++)
+           {
+               printf("%u ",buff[i][j]);
            }
        }
         
-        printf("%d\n",sizeof(buff));
+        
         
         for(i=1;i<r-1;i++)
         {
@@ -56,10 +65,10 @@ int main()
                 {
                     for(l=0;l<3;l++)
                     {
-                        //sum += kernel[k][l] * buff[i-1+k][j-1+l]; 
+                        sum += kernel[k][l] * buff[i-1+k][j-1+l]; 
                     }
                 }
-                //buff[i][j] = sum;
+                buff[i][j] = sum;
             }
         }
         
@@ -69,4 +78,3 @@ int main()
     
     return 0;
 }
-
