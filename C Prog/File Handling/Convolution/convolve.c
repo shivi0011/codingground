@@ -36,10 +36,14 @@ int main()
         {printf("Error in malloc!!");exit(0);}
         
         
-        while(fread(&buff,fileLen,1,fp1)==1)
-        {
-            //fwrite(&buff,fileLen,1,fp1);
-        }
+           
+       for(i=0;i<r;i++)
+       {
+           for(j=0;j<c;j++)
+           {
+               fread(&buff[i],r,1,fp1);
+           }
+       }
         
         printf("%d\n",sizeof(buff));
         
@@ -52,10 +56,10 @@ int main()
                 {
                     for(l=0;l<3;l++)
                     {
-                        sum += kernel[k][l] * buff[i-1+k][j-1+l]; 
+                        //sum += kernel[k][l] * buff[i-1+k][j-1+l]; 
                     }
                 }
-                buff[i][j] = sum;
+                //buff[i][j] = sum;
             }
         }
         
