@@ -1,5 +1,6 @@
 https://stackoverflow.com/questions/13750142/c-image-proccessing-reading-an-image-file-into-2d-array
 
+https://docs.gimp.org/en/plug-in-dilate.html  ----- Best*********
 http://beej.us/blog/data/convolution-image-processing/  -- BEST provides ONLINE CONVOLUTION EFFECTS*****************
 ---------------------------------------------
                 for basics
