@@ -1,6 +1,6 @@
 https://stackoverflow.com/questions/13750142/c-image-proccessing-reading-an-image-file-into-2d-array
 
-
+http://beej.us/blog/data/convolution-image-processing/  -- BEST provides ONLINE CONVOLUTION EFFECTS*****************
 ---------------------------------------------
                 for basics
 ---------------------------------------------
@@ -8,6 +8,7 @@ https://docs.gimp.org/en/plug-in-convmatrix.html
 http://www.roborealm.com/help/Convolution.php
 --> New value should NOT be used in further processings...save this new value in other image and use the same old value for further processings.
 https://gmicol.greyc.fr/  -- for online image processings effects
+https://graphics.stanford.edu/courses/cs178/applets/convolution.html
 
 https://developer.apple.com/library/content/documentation/Performance/Conceptual/vImage/ConvolutionOperations/ConvolutionOperations.html
 kernel values should be unsigned 8 bit integers... uint_8 kernel = {-2, -2, 0, -2, 6, 0, 0, 0, 0};
