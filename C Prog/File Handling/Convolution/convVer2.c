@@ -12,7 +12,7 @@ void writeFile(FILE *fp1)
     {
        for(j=0;j<c;j++)
        {
-           unsigned char ch = ('a'+j)%10;
+           char ch = ('a'+j)%10;
            fwrite(&ch,1,1,fp1);
            //printf("%u ",ch);
        }
@@ -27,7 +27,7 @@ void readFile(FILE *fp1)
     {
        for(j=0;j<c;j++)
        {
-           unsigned char ch;
+           char ch;
            fread(&ch,1,1,fp1);
            //printf("%u ",ch);
        }
@@ -43,7 +43,7 @@ int main()
                         {2,0,-2},
                         {1,0,-1}};
     
-    fp1 = fopen("writefile.raw","wb");
+    fp1 = fopen("lena_gray.raw","rb");
     if(fp1==NULL)
     {printf("Error in opening the source file!");return 0;}
     else
@@ -64,16 +64,15 @@ int main()
         if(buff == NULL)
         {printf("Error in malloc!!");exit(0);}
 
-       writeFile(fp1);
-        
-      fseek(fp1,0,SEEK_SET);
+       //writeFile(fp1);
+       //fseek(fp1,0,SEEK_SET);
         
       /* printf("\n::::::::::Copying data from File to buff:::::::::::\n");*/
        for(i=0;i<r;i++)
        {
            for(j=0;j<c;j++)
            {
-              unsigned char ch;
+              char ch;
               fread(&ch,1,1,fp1);
               //printf("%u ",ch);
               buff[i][j] = ch;
@@ -82,8 +81,8 @@ int main()
     
     //printf("\n:::::::::File Content::::::::::\n");fseek(fp1,0,SEEK_SET);
     //readFile(fp1);
-    
-    printf("\n:::::::::buff Content::::::::::\n");
+    /*
+   // printf("\n:::::::::buff Content::::::::::\n");
        for(i=0;i<r;i++)
        {
            for(j=0;j<c;j++)
@@ -92,31 +91,31 @@ int main()
            }
            printf("\n");
        }
-        
+      */  
         
         
         for(i=1;i<r-1;i++)
         {
             for(j=1;j<c-1;j++)
             {
-                int sum=0;
+                char sum=0;     //should it be char or int...whats difference
                 for(k=0;k<3;k++)
                 {
                     for(l=0;l<3;l++)
                     {
-                        printf(" kernel[%d][%d] * buff[%d][%d] = ",k,l,i-1+k,j-1+l);
-                        printf("%d * %d\n",kernel[k][l], buff[i-1+k][j-1+l]);
+                        //printf(" kernel[%d][%d] * buff[%d][%d] = ",k,l,i-1+k,j-1+l);
+                        //printf("%d * %d\n",kernel[k][l], buff[i-1+k][j-1+l]);
                         sum += kernel[k][l] * buff[i-1+k][j-1+l]; 
                         
                     }
-                    printf("Sum = %d\n",sum);
+                    //printf("Sum = %d\n",sum);
                 }
-                printf("Final update Sum = %d\n",sum);
+                //printf("Final update Sum = %d\n",sum);
                 buff[i][j] = sum;
             }
         }
         
-        printf("\n:::::::::buff Content after kernel::::::::::\n");
+       /* printf("\n:::::::::buff Content after kernel::::::::::\n");
        for(i=0;i<r;i++)
        {
            for(j=0;j<c;j++)
@@ -125,13 +124,14 @@ int main()
            }
            printf("\n");
        }
+        */
         
         /*Put the buffer content into the new file*/
         for(i=0;i<r;i++)
         {
            for(j=0;j<c;j++)
            {
-               int a = buff[i][j];
+               char a = buff[i][j];
                fwrite(&a,1,1,fp2);
                //printf("%u ",ch);
            }
