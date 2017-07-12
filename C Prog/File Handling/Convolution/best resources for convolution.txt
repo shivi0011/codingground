@@ -1,5 +1,9 @@
 https://stackoverflow.com/questions/13750142/c-image-proccessing-reading-an-image-file-into-2d-array
 
+
+
+https://docs.gimp.org/en/plug-in-convmatrix.html  --- for basics
+
 http://setosa.io/ev/image-kernels/
 https://github.com/petermlm/SobelFilter/tree/master/src
 http://cis.k.hosei.ac.jp/~wakahara/sobel.c
