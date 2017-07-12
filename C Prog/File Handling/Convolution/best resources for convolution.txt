@@ -11,6 +11,9 @@ https://gmicol.greyc.fr/  -- for online image processings effects
 
 https://developer.apple.com/library/content/documentation/Performance/Conceptual/vImage/ConvolutionOperations/ConvolutionOperations.html
 kernel values should be unsigned 8 bit integers... uint_8 kernel = {-2, -2, 0, -2, 6, 0, 0, 0, 0};
+On almost every system uint8_t is just a typedef for unsigned char
+It documents your intent - you will be storing small numbers, rather than a character.
+The whole point is to write implementation-independent code. unsigned char is not guaranteed to be a 8-bit type. uint8_t is. 
 
 Convolution is a common image processing technique that changes the intensities of a pixel to reflect the intensities of the surrounding pixels. A common use of convolution is to create image filters. Using convolution, you can get popular image effects like blur, sharpen, and edge detection
 
