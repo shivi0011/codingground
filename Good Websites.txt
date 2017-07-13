@@ -4,3 +4,8 @@ Best websites for C++
 ----------------------------
 https://hackr.io/tutorials/learn-c-c-plus-plus
 https://www.codesdope.com/cpp-lets-start/
+http://coursacado.gregorywickham.com/c++.php
+
+  http://www.tutorialboneyard.com/cpp-arrays-strings/  -- good
+  
+  https://www.javatpoint.com/cpp-oops-concepts
