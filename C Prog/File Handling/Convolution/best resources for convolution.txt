@@ -59,3 +59,9 @@ check price on paytm
 
 
 buy cancellation also...
+
+
+
+Pointer in C/C++
+--------------------
+https://people.engr.ncsu.edu/efg/210/s99/Notes/pointers.html
