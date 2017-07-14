@@ -1,6 +1,7 @@
 #include <iostream>
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
 #define r 512
 #define c 512
@@ -11,7 +12,7 @@ using namespace std;
 class myClass
 {
     public:
-    void convolve()
+    void convolve(FILE *fp1,FILE *fp2,unsigned char **buff,unsigned char **buffCopy,int kernel[3][3])
     {
         int i,j,k,l;
        
@@ -44,7 +45,6 @@ class myClass
            }
        }
         
-        
         for(i=1;i<r-1;i++)
         {
             for(j=1;j<c-1;j++)
@@ -69,8 +69,12 @@ class myClass
                fwrite(&a,1,1,fp2);
            }
         }
+        
+        free(buff);
+        free(buffCopy);
+        fclose(fp1);
+        fclose(fp2);
     }
-    
 };
 
 int main()
@@ -83,7 +87,7 @@ int main()
                         {2,0,-2},
                         {1,0,-1}};
     
-    /*
+    
     int sharpenKernel[3][3] = {{0,-1,0},           //sharpen Convolution
                             {-1,5,-1},
                             {0,-1,0}};
@@ -98,21 +102,28 @@ int main()
                                 {0,0,0},
                                 {-1,0,1}};
     
-     */
+    
     fp1 = fopen("lena_gray.raw","rb");
     if(fp1==NULL)
     {printf("Error in opening the source file!");return 0;}
     else
     {   
-        fp2 = fopen("edgeDetectionConv1.raw","wb");
+        char str1[50] = "hKernel";
+        char str2[50] = "edgeDetection";
+        //char str3[50] = "edgeDetectionV1";
+        
+        myClass c1,c2,c3;
+        fp2 = fopen(strcat(str1,".raw"),"wb");
         if(fp2==NULL)
         printf("Error in creating new file!");
-
-        myClass c1,c2,c3;
         c1.convolve(fp1,fp2,buff,buffCopy,hKernel);
         
-        fclose(fp1);
-        fclose(fp2);
+        fp2 = fopen(strcat(str2,".raw"),"wb");
+        if(fp2==NULL)
+        printf("Error in creating new file!");
+        fp1 = fopen("lena_gray.raw","rb");
+        c2.convolve(fp1,fp2,buff,buffCopy,sharpenKernel);
+        
     }
     
     return 0;
