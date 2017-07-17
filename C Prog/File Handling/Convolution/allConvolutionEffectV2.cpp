@@ -75,7 +75,9 @@ class myClass
             }
         }
         
-        /*Put the buffer content into the new file*/
+        
+        /*Put the buffer content char by char into the new file*/
+        /*
         for(i=0;i<r;i++)
         {
            for(j=0;j<c;j++)
@@ -83,6 +85,16 @@ class myClass
                unsigned char a = buffCopy[i][j];
                fwrite(&a,1,1,fp2);
            }
+        }*/
+        
+         /*Put the buffer content row by row into the new file*/
+        for(i=0;i<r;i++)
+        {
+            unsigned char a[c];
+            for(j=0;j<c;j++)
+                a[j] = buffCopy[i][j];
+                
+            fwrite(a,sizeof(a),1,fp2);      //writing row by row
         }
         
         fseek(fp1,0,SEEK_SET);
