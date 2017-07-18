@@ -6,6 +6,7 @@ https://codescracker.com/cpp/cpp-data-file-handling.htm --- best
 https://hackr.io/tutorials/learn-c-c-plus-plus
 https://www.codesdope.com/cpp-lets-start/
 http://coursacado.gregorywickham.com/c++.php
+https://www.hackerearth.com/practice/notes/validating-user-input-in-c/
 
   http://www.tutorialboneyard.com/cpp-arrays-strings/  -- good
   
