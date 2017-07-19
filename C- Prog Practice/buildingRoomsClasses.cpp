@@ -2,6 +2,7 @@
 
 using namespace std;
 
+/*:::::::::::::::CLASSES:::::::::::::::::::*/
 class building
 {
     int rooms,floors,area;
@@ -14,7 +15,6 @@ class building
     int getArea();
     void setArea(int num);
 };
-
 class house:public building
 {
     int bedrooms,baths;
@@ -25,7 +25,6 @@ class house:public building
     int getBaths();
     void setBaths(int num);
 };
-
 class school:public building
 {
     int classrooms,offices;
@@ -38,7 +37,7 @@ class school:public building
 };
 
 
-
+/*::::::::::::::::FUNCTIONS::::::::::::::::::::*/
 /*SET funcitons for BUILDING*/
 void building::setRooms(int num)    //by using scope resolution operator, we're telling to compiler
 {                           //that this fn setRooms is belongs to building class bcz we cannot make 
