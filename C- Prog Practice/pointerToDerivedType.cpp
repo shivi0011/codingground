@@ -34,5 +34,12 @@ int main()
     bp->set_j(40);    
     cout<<get_j()<<endl;
 */
+
+/*to access the members of derived class using base class pointer, we need to cast base pointer to a 
+pointer of derived type*/
+
+((derived*)bp)->set_j(500);
+cout<<((derived*)bp)->get_j()<<endl;
+
     return 0;
 }
