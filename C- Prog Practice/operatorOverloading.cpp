@@ -39,7 +39,8 @@ int main()
     ob2.show();     //displays 5 30
     
     ob1 = ob1+ob2;    //displays 15 30
-   return 0;
+    ob1.show();         //or we can directly call (ob1+ob2).show();
+    return 0;
 }
 
 /*In operator overloading, unary operator takes no argument and Binary operator takes 1 argument as 
