@@ -1,0 +1,4 @@
+http://www.openmp.org/resources/
+
+https://computing.llnl.gov/tutorials/openMP/
+https://www.codeproject.com/Articles/60176/A-Beginner-s-Primer-to-OpenMP
