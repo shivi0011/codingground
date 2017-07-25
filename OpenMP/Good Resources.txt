@@ -2,3 +2,19 @@ http://www.openmp.org/resources/
 
 https://computing.llnl.gov/tutorials/openMP/
 https://www.codeproject.com/Articles/60176/A-Beginner-s-Primer-to-OpenMP
+
+https://www.researchgate.net/post/Which_parallelising_technique_OpenMP_MPI_CUDA_would_you_prefer_more
+
+http://hpctutorials.com/learn/    ---- BEST****
+https://developer.nvidia.com/cuda-zone
+https://www.quora.com/What-is-the-very-simple-multithreading-example-in-C    ----- good
+
+https://www.eustaad.in/
+
+
+
+Multithreading
+-------------
+http://www.cs.kent.edu/~ruttan/sysprog/lectures/multi-thread/multi-thread.html
+
+https://www.tutorialcup.com/cplusplus/multithreading.htm   --- in C++ goood
