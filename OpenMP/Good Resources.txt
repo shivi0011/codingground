@@ -18,3 +18,5 @@ Multithreading
 http://www.cs.kent.edu/~ruttan/sysprog/lectures/multi-thread/multi-thread.html
 
 https://www.tutorialcup.com/cplusplus/multithreading.htm   --- in C++ goood
+http://bisqwit.iki.fi/story/howto/openmp/ 
+https://randu.org/tutorials/threads/
