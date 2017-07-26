@@ -1,0 +1,5 @@
+To get the number of threads for a given pid:
+
+ps -o nlwp <pid>
+
+
