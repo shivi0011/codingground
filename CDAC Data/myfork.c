@@ -1,6 +1,6 @@
 #include<stdio.h>     
 #include<unistd.h>     // for fork() and getpid()
-#include<sys/types.h>  // for 
+#include<sys/types.h>  
 #include<stdlib.h>     // for exit()
 #include<sys/wait.h>   // for wait()
 
@@ -21,7 +21,7 @@ return max;
 }
 
 
-int main(int argc, char **argv)      // taking number of elements of array as command line arguments
+int main(int argc, char **argv)      
 {
 int n,i,l,r,PL,PR,max1,max2,mid,out,max11,max22;
 
@@ -54,7 +54,7 @@ pid_t pid,ppid;
 	{
 	mid=(l+r)/2;
 	PL=fork();
-	//sleep(1);
+	sleep(1);
 	    	if(PL<0)
 		perror((char*)PL);
 		if(PL==0)   //i.e. child created successfully
@@ -86,8 +86,7 @@ pid_t pid,ppid;
 waitpid(PL,&m1,0);
 RET1=WEXITSTATUS(m1);    //need to catch the exit status of each of the maximum number found by above childs
 waitpid(PR,&m2,0);        
-RET2=WEXITSTATUS(m2);    //It will exit from wait once it receives the status of m2 from above child PR as on receiving the final value it will exit from wait and parent
-				//will complete its execution
+RET2=WEXITSTATUS(m2);    
 
 maximum=RET1>RET2?RET1:RET2;
 return maximum;
