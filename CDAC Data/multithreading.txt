@@ -1,0 +1,329 @@
+1. why do we need multi-threading in an application / program ??
+
+   - increase responsiveness of an application/program !!!
+     - an example may a web browser that can work with
+       multiple sites with multiple tabs - still, respond
+       to user's actions for one or more tabs - this is 
+       achieved via multithreading !!! firefox is a good example -
+       chrome is a good example !!! 
+     - another example is openoffice in Linux !!
+
+   - how does multi-threading improve the responsiveness of 
+     a process/application/program ???
+
+     - before concluding on the above question, let us look 
+       a few examples :
+         - what happens, when you are closing an active
+           tab of a browser ??
+            - the backing thread(s) can be independently 
+              terminated - this is a form of responsiveness!!!
+            - in this case, termination of these threads 
+              will almost immediate and will not affect 
+              the other threads of the process !!!
+         - what happens, when you are opening an active
+            tab of a browser ??
+            - one or more backing threads may be created
+            - these threads may initiate their own network 
+              I/O - if network I/O can supply data immediately
+              these threads will complete their work immediately -
+              this is responsiveness - this can almost happen
+              in the presence of other active tabs, in most 
+              cases, unless system is overloaded and current 
+              tab is not provided enough CPU cycles  
+
+         - what happens, when you launching a spell checker
+           from openoffice ??
+             - another activity can still be initiated !!! 
+
+         - what happnes when you are controlling volume/
+           brightness of a media player, when you playing
+           some video file ??
+             - a thread responds to our actions and 
+               this does not affect the behaviour of 
+               other threads in the application !!!
+             - what was the thread(s) doing when we are
+               not initiating any action ??? thread(s)
+               were blocked, normally - they will 
+               respond when an I/O event is generated !!!
+               after responding to an I/O event, they will
+               again block !!1
+
+
+2. how do we achieve multi-threading in a process/ application / program ??
+
+   - breaking a program/application into smaller pieces of 
+     code, which are based on specific tasks within the application 
+     /program  
+
+   - share libraries of a process (anyway, processes share shared 
+                                   libraries !!!) 
+
+   - the first thread of a process is known as main thread and
+     is always created by the operating system during process
+     creation !!! this main thread is invariably the controlling
+     thread of an application from the application's perspective !!! 
+
+   - main thread will have its own user-space stack 
+   - other additional threads will be created by the operating 
+     system, if application requests - for each such additional
+     thread, a new user-space stack is created !!!
+   - main thread and additional threads are provided with 
+     individual kernel stacks/system stacks 
+
+   - virtual address space of the process is shared by all 
+     the threads of the process
+   - due to the above, page-frames mapping the virtual address
+     space of a process are shared among threads of a process !!!
+   - code,data,heap and most other sections of a process are
+     shared and visible for all threads - although stacks of 
+     all threads are visible to all threads, a thread must 
+     not interfere with stack of another thread - if it does so,
+     it will compromise the existence/execution of the other thread
+   - even if code,data,heap and most other sections are visible 
+     to all threads, each thread must follow rules of the application 
+     and rules of concurrency / race-condition, where applicable !!!
+  
+
+3. what is the support for multi-threading in an 
+   application / program/process, given by operating system  ??
+
+   - you may learn multithreading from operating system / process
+     point of view !!!
+     -a process descriptor manages several thread descriptors 
+      - each thread descriptor manages a thread of the process !!!
+     - td of each thread is supposed to manage a thread with the
+       help of fields of td and pd/associated objects 
+     - td maintains following info:
+          - kernel stack of a thread 
+          - td manages tid of a thread - which is the identity 
+            of a thread !!!
+          - manages pd of the thread - this enables to identify 
+            process of a thread !!!
+          - save areas of a thread are managed by kernel stack 
+            of the thread  
+          - td manages scheduling parameters of a thread - in turn,
+            td/thread  is scheduled - in a system that supports
+            multithreading, tds are managed in ready queues of
+            scheduler - pds are not managed in ready queues of 
+            scheduler !!! each thread has its own merit for 
+            scheduling - meaning, each thread is capable of 
+            being scheduled by the scheduler !!!
+          - td is used to block a thread of a process in a wq
+            of the relevant resource !!! once again, td is used
+            to manage a thread - pds are no longer used to 
+            block a process - in a system that supports multithreading,
+            a process is never blocked, threads are - in fact, 
+            this is one of the main reasons for responsiveness !!!  
+          - if a thread of a process is blocked, other threads of 
+            the process may still be scheduled !!
+          - each thread of a process may be assigned different 
+            scheduling policies or different scheduling priorities !!!
+          - how is a piece of code of a process associated with 
+            a thread ?? address of a piece of code of the process
+            will be used to initialize program counter of 
+            thread context !!!
+          - how is a user-space stack associated with a thread
+            of a process ?? meaning, how different threads 
+            of a process are assigned different user-space stacks ??
+              - it is assigned by using appropriate values
+                for stack pointer in the thread's context -
+                for each user-space stack of a thread, a new
+                VAD is created !!! for each new VAD, a new set
+                of secondary page tables and ptes - eventually,
+                a new set of page-frames !!!
+
+          - how is the data section of a process associated with 
+            threads of a process ???
+              - virtual addresses of VADs of data sections are
+                visible to all threads of a process !!!
+
+
+          - how is the heap section of a process associated with 
+            threads of a process ???
+
+               - via VADs 
+          
+          - how are the VADs of a process related to threads of 
+            a process ??
+
+               - all VADs are shared by all threads of a process
+
+
+          - how are the page - tables of a process related to threads
+            of a process ??
+
+
+               - page tables are shared among all threads of a 
+                 process !!!
+               - due to this physical memory/page-frames are
+                 shared among threads !!
+
+
+          - how are threads maintained in the system with respect to 
+            scheduling ???
+
+               - ready queues now contain tds, not pds 
+
+
+   - you may learn multithreading from application/frame-work 
+     point of view !!!
+   - it is as per your requirement !!! 
+
+
+4. what are the differences between multithreading and multiple processes ??
+
+   - each process has its own address space and physical memory -
+     with its own pd
+   - threads of a process shared address space and physical memory 
+     of  a process - no new pds are created, light weight tds are 
+     created !!
+   - by default, a process cannot access data space of another process
+   - by default, all threads of a process can access data space of 
+                 the process 
+          - data-exchange between threads of a process are lighter
+            and faster !!! do not need system call APIs for 
+            data -exchange !!!
+
+   - whenever there is a process switch, it is expensive, since
+     address space is changed !!!
+   - whenever there is a thread switch between threads of the same 
+     process, it is less expensive !!!
+   - based on all the above merits, threads yield following 
+     advantages :
+          - better responsiveness
+          - faster, lighter and flexible IPC 
+          - convenient for most applications 
+          - uses less resources compared to processes
+          - can improve throughput of a multithreaded application 
+             , in multiprocessor environment !!!
+                 - parallel execution of threads of a process !!
+
+5. what is the relationship between a process and threads of a process ??
+
+    - covered in the above discussion 
+ 
+    - if a process terminates normally or abnormally, all threads
+      of the process are terminated !!!
+
+    - if a thread of a process is terminated abnormally, all 
+      threads of the process will be terminated abnormally by 
+      the system !!
+ 
+    - if a thread is terminated normally, other threads need not 
+      be terminated - in any case, it is the decision of th e
+      developer / application !!!
+
+    - what happens if we generate SIGKILL to a multithreaded process ?
+        - all threads will be abnormally terminated and process
+          will also be ???
+
+    - what happens if a thread is directed SIGSEGV signal by the
+      system due to an illegal memory access ??
+        - all threads will be terminated abnormally and 
+          process will be terminated ???
+
+    - a process will be terminated, when the last thread 
+      of the process terminates, normally - in this context, 
+      we are assuming that threads are terminated normally !!!
+ 
+    - when a thread terminates, any resources held by the 
+      thread are not freed by the system - it is the responsibility 
+      of the developer to free resources before termination !!!
+      - if this is not taken care, there may be resource leakage
+        in a process/application !!!
+
+    - if an API/library function is safe to be used in single 
+      threaded process environment, it may not be safe to 
+      use the same in a multi-threaded process environment !!!
+      - meaning, for a library API or any other function to
+        be used safely in multithreaded environment, certain 
+       rules must be satisfied !!!
+
+      - let us take an example of some API that uses a global 
+        variable/buffer/data-structure, when it is invoked !!
+        - do you see any problem, when it is used in 2 concurrent 
+          processes ???
+              - no problem !!! using separate variable/buffer/
+                data-structure, in different address spaces 
+
+        - do you see any problem, when it is used in 2 concurrent 
+          threads of a process ???
+              - yes, there will be race-conditions !!!
+              - one way to solve is using locks - say, 
+                mutex lock or semaphore lock !!!
+              - if an API may be rewritten such that it 
+                uses different objects even in multi-threaded
+                environment, it is acceptable - such rewritten
+                APIs are known as reentrant, thread-safe APIs
+              - refer to man strerror or several such 
+                APIs and man pages for more on reentrant APIs
+              - malloc() and friends are not thread safe - 
+                you cannot solve this using reentrant functions !!!
+              - assuming there are 2 Threads executing concurrently 
+                and accessing a non-reentrant API - when a thread
+                is in the middle of using the API, there is a 
+                possibility of preemption !!!  if there is a preemption 
+                of TH1 and TH2 is scheduled, TH2 may end up using 
+                the same non-reentrant API - this will lead to 
+                race-condition !!!  
+              - in the above case, if a reentrant API is used, 
+                race-condition will not occur !!!
+
+
+6. what is the relationship between process address space and threads of 
+   a process ??
+     - as discussed above !!!
+
+7. what is the scheduling mechanism used to schedule threads of a process ??
+
+           - all threads of all processes are maintained by 
+             the scheduler's ready queues 
+           - threads of a process are scheduled  as per their 
+             merits with respect to other threads of other 
+             processes, in the ready queues !!!
+           - if a process is to be treated with higher importance,
+             all threads of that process may be assigned priority
+             based policy and higher priorities !!!
+
+
+
+8. what are the typical problems faced in a multi-threading process ??
+
+           - as discussed above
+
+
+9. how to over come problems faced in a multi-threading process ???
+
+  
+           - as discussed above 
+
+
+10. when will a process creation system call API be used in 
+    the system ??
+
+      - when a new process is to be created for a new
+        application or program to be launched !!!
+
+
+11. when will a thread creation system call API be used in 
+    the system ???
+
+       - when a new process created, a main thread will 
+         be implicitly created using thread system cal l
+         system routine !!!
+       - when application/developer requires additional 
+         threads for a process, thread creation system 
+         call API may be invoked !!!
+       - in reality, thread system call APIs are not directly 
+         invoked - they are indirectly invoked via library 
+         APIs - still, you must understand that the underlying 
+         principles are the same !!!
+
+
+
+
+
+
+
+
+
