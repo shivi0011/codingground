@@ -1,0 +1,55 @@
+To see how many cores you have in your system, try this:
+
+grep 'processor.*:' /proc/cpuinfo | wc -l 
+
+To check the free disk space
+ df -h 
+ 
+When the compiler sees the start of the parallel region, it creates a pool of threads. When the program runs, these threads start executing, and are controlled by what information is in the hints. Without additional hints, we simply have a “bunch” or “bag” of threads.
+
+A way to visualize this is to imagine an implicit loop around your parallel region, where you have N CPU/core iterations of the loop. These iterations all occur at the same time, unlike an explicit loop.
+
+The number of cores is controlled by an environment variable, OMP_NUM_THREADS. If it is not set, it could default to 1 or the number of cores on your machine. Just to be sure, you may want to do the following.
+
+export OMP_NUM_THREADS=`grep 'processor' /proc/cpuinfo | wc -l `
+
+#include "stdio.h" 
+int main(int argc, char *argv[])
+{
+  #pragma omp parallel
+  {
+    printf("hello multicore user!\n");
+  }
+  return(0);
+}
+
+By adjusting the value of the OMP_NUM_THREADS environment variable, we can adjust the number of execution threads.
+
+If we set 1 thread, we get, one print statement.
+
+#include "stdio.h"
+#include <omp.h>
+
+int main(int argc, char *argv[])
+{
+  #pragma omp parallel
+  {
+    int NCPU,tid,NPR,NTHR;
+    /* get the total number of CPUs/cores available for OpenMP */
+    NCPU = omp_get_num_procs();
+    /* get the current thread ID in the parallel region */
+    tid = omp_get_thread_num();
+    /* get the total number of threads available in this parallel region */
+    NPR = omp_get_num_threads();
+    /* get the total number of threads requested */
+    NTHR = omp_get_max_threads();
+    /* only execute this on the master thread! */
+    if (tid == 0) {
+      printf("%i : NCPU\t= %i\n",tid,NCPU);
+      printf("%i : NTHR\t= %i\n",tid,NTHR);
+      printf("%i : NPR\t= %i\n",tid,NPR);
+    }
+    printf("%i : hello multicore user! I am thread %i out of %i\n",tid,tid,NPR);
+  }
+return(0);
+}
