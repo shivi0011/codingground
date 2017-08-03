@@ -1,7 +1,7 @@
 http://www.openmp.org/resources/
 
 https://computing.llnl.gov/tutorials/openMP/
-https://www.codeproject.com/Articles/60176/A-Beginner-s-Primer-to-OpenMP
+https://www.codeproject.com/Articles/60176/A-Beginner-s-Primer-to-OpenMP  ----gooood
 
 https://www.researchgate.net/post/Which_parallelising_technique_OpenMP_MPI_CUDA_would_you_prefer_more
 
