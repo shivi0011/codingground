@@ -21,3 +21,6 @@ https://www.tutorialcup.com/cplusplus/multithreading.htm   --- in C++ goood
 http://bisqwit.iki.fi/story/howto/openmp/ 
 https://randu.org/tutorials/threads/
 http://www.linux-mag.com/id/4609/ -- BEST
+
+
+http://berenger.eu/blog/c-openmp-examples-of-basic-parallel-programming/  -----------PRINT THIS
