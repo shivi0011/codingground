@@ -24,3 +24,5 @@ http://www.linux-mag.com/id/4609/ -- BEST
 
 
 http://berenger.eu/blog/c-openmp-examples-of-basic-parallel-programming/  -----------PRINT THIS
+
+https://www.dartmouth.edu/~rc/classes/intro_openmp/ --- goood
