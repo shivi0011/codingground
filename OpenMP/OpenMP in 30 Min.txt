@@ -53,3 +53,132 @@ int main(int argc, char *argv[])
   }
 return(0);
 }
+
+============================https://www.dartmouth.edu/~rc/classes/intro_openmp=======================================
+(7) Example of Parallelizing a Loop
+#include <omp.h>
+#include <stdio.h>
+#include <stdlib.h>
+#define N       100
+
+int main (int argc, char *argv[]) {
+
+int nthreads, tid, i;
+float a[N], b[N], c[N];
+
+/* Some initializations */
+for (i=0; i < N; i++)
+  a[i] = b[i] = i;
+
+
+#pragma omp parallel shared(a,b,c,nthreads) private(i,tid)
+  {
+  tid = omp_get_thread_num();
+  if (tid == 0)
+    {
+    nthreads = omp_get_num_threads();
+    printf("Number of threads = %d\n", nthreads);
+    }
+
+  printf("Thread %d starting...\n",tid);
+
+  #pragma omp for 
+  for (i=0; i<N; i++)
+    {
+    c[i] = a[i] + b[i];
+    printf("Thread %d: c[%d]= %f\n",tid,i,c[i]);
+    }
+
+  }  /* end of parallel section */
+
+}
+
+omp_get_thread_num() - get the thread rank in a parallel region (0- omp_get_num_threads() -1)
+omp_set_num_threads(nthreads) - set the number of threads used in a parallel region
+omp_get _num_threads() - get the number of threads used in a parallel region
+
+Note that in general the rank output are not in order.
+
+export OMP_NUM_THREADS=2
+
+(10) OpenMP Clauses 
+     1. firstprivate
+     2. lastprivate
+     3. ordered
+
+firstprivate
+-----------------
+    initialize a variable from the serial part of the code
+    private clause doesn't initialize the variable
+
+ j = jstart;
+#pragma omp parallel for firstprivate(j)
+{
+   for(i=1; i<=n; i++){
+      if(i == 1 || i == n)
+         j = j + 1;
+      a[i] = a[i] + j;
+   }
+}
+
+lastprivate
+--------------
+    thread that executes the ending loop index copies its value to the master (serial) thread
+    this gives the same result as serial execution
+#pragma omp parallel for lastprivate(x)
+{
+   for(i=1; i<=n; i++){
+      x = sin( pi * dx * (float)i );
+      a[i] = exp(x);
+   }
+}
+lastx = x;
+
+ordered
+-------------
+    used when part of the loop must execute in serial order
+    ordered clause plus an ordered directive
+#pragma omp parallel for private(myval) ordered
+{
+   for(i=1; i<=n; i++){
+      myval = do_lots_of_work(i);
+      #pragma omp ordered
+      {
+         printf("%d %d\n", i, myval);
+      }
+   }
+}
+
+(11) Reduction Clause
+An example of a reduction operation is a summation:
+for(i=1; i<=n; i++)
+{
+   sum = sum + a[i];
+}
+How reduction works:
+
+    sum is the reduction variable
+    cannot be declared shared
+        threads would overwrite the value of sum
+    cannot be declared private
+        private variables don't persist outside of parallel region
+    specified reduction operation performed on individual values from each thread
+
+C/C++  Reduction Operands
+------------------------
+Operator	Initial value
++	         0
+*	         1
+-		        0
+&		       ~0
+|		        0
+^		        0
+&&		       1
+||	0
+
+
+
+
+
+
+
