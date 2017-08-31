@@ -9,4 +9,5 @@ http://www.businessinsider.in/Googles-new-artificial-intelligence-tool-has-massi
 https://devblogs.nvidia.com/parallelforall/nvidia-digits-alzheimers-disease-prediction/
 http://www.biorxiv.org/content/early/2017/01/14/070441 --download the paper
 
+https://medium.com/@avihay/bring-magic-to-your-mobile-app-with-deep-learning-184d9062d7fc -- best
 
