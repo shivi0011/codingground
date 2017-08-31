@@ -6,3 +6,7 @@ https://developer.download.nvidia.com/books/cuda-by-example/cuda-by-example-samp
 
 https://www.microway.com/hpc-tech-tips/caffe-deep-learning-using-nvidia-digits-tesla-gpus/
 http://www.businessinsider.in/Googles-new-artificial-intelligence-tool-has-massive-potential/articleshow/49742834.cms
+https://devblogs.nvidia.com/parallelforall/nvidia-digits-alzheimers-disease-prediction/
+http://www.biorxiv.org/content/early/2017/01/14/070441 --download the paper
+
+
