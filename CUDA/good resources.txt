@@ -3,3 +3,5 @@ https://www.codeproject.com/Tips/186655/CUDA-on-VS-in-steps
 https://developer.nvidia.com/cuda-downloads
 
 https://developer.download.nvidia.com/books/cuda-by-example/cuda-by-example-sample.pdf
+
+https://www.microway.com/hpc-tech-tips/caffe-deep-learning-using-nvidia-digits-tesla-gpus/
