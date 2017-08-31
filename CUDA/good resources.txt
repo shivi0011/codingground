@@ -5,3 +5,4 @@ https://developer.nvidia.com/cuda-downloads
 https://developer.download.nvidia.com/books/cuda-by-example/cuda-by-example-sample.pdf
 
 https://www.microway.com/hpc-tech-tips/caffe-deep-learning-using-nvidia-digits-tesla-gpus/
+http://www.businessinsider.in/Googles-new-artificial-intelligence-tool-has-massive-potential/articleshow/49742834.cms
