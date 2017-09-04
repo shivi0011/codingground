@@ -1,0 +1,6 @@
+https://groups.google.com/forum/#!msg/digits-users/FfeFp0MHQfQ/hUabaG1zCAAJ
+
+for a grayscale image, every pixel in the mean image is computed from the average of all corresponding pixels (i.e. same coordinates) across all images of your dataset. "Mean image" subtraction means that this mean image is subtracted from any input image you feed to the neural network. The intention is to have inputs that are (on average) centred around zero.
+The mean pixel is simply the average of all pixels in the mean image. "Mean pixel" subtraction means that you subtract the *same* mean pixel value from all pixels of the input to the neural network.
+
+Now the same applies to RGB images, except that every channel is processed independently (this means we don't compute averages across channels, instead every channel independently goes through the same transformations as for a grayscale image).
