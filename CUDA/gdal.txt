@@ -6,4 +6,23 @@ http://www.gdal.org/gdal_tutorial.html
 https://github.com/dwtkns/gdal-cheat-sheet
 
 
+https://gis.stackexchange.com/questions/14712/splitting-raster-into-smaller-chunks-using-gdal -- BEST
+[  -- python script --
+import os, gdal
+from gdalconst import *
+
+'''mention height n width of image u want to tile out'''
+width = 512
+height = 512
+tilesize = 256
+
+for i in range(0, width, tilesize):
+    for j in range(0, height, tilesize):
+        gdaltranString = "gdal_translate -of GTIFF -srcwin "+str(i)+", "+str(j)+", "+str(tilesize)+", " \
+            +str(tilesize)+" utm.tif utm_"+str(i)+"_"+str(j)+".tif"
+        os.system(gdaltranString)
+]
+
+
+
 
