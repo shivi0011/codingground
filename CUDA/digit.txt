@@ -7,3 +7,6 @@ Now the same applies to RGB images, except that every channel is processed indep
 
 
 http://philipperemy.github.io/tinder-deep-learning/
+https://devblogs.nvidia.com/parallelforall/exploring-spacenet-dataset-using-digits/
+
+
