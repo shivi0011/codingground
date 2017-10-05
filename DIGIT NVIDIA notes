@@ -8,3 +8,10 @@ the idea of training on these adversarial examples also improves accuracy on the
 carefully calculated.
 
 http://karpathy.github.io/2015/03/30/breaking-convnets/
+
+
+Building models using keras:::::::::::::best:::::::::::::
+https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html
+code can be found at
+https://gist.github.com/fchollet/0830affa1f7f19fd47b06d4cf89ed44d
+
