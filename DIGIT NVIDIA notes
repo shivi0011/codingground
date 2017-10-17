@@ -21,3 +21,15 @@ https://github.com/BVLC/caffe/issues/2936
 
 
 https://www.mapbox.com/help/processing-satellite-imagery/      --- best one having gdal script
+
+https://github.com/NVIDIA/DIGITS/issues/47
+    Install Python. In my case, I installed Anaconda (https://www.continuum.io/downloads). Optionally, you can also install PyCharm (https://www.jetbrains.com/pycharm/) to configure and run the Python projects in a more visual way.
+    Install Graphviz for Windows (http://www.graphviz.org/Download_windows.php) and include its bin directory in the 'path' environment variable.
+    Checkout the 'windows' branch of Caffe (https://github.com/BVLC/caffe/tree/windows) and compile it (quite straightforward to do this, just follow the instructions explained there).
+    Include the 'caffe' folder generated when compiling 'pycaffe' (the one inside the 'CAFFE_PATH\Build\x64\Release\pycaffe' folder), in the folder 'C:\Anaconda2\Lib\site-packages', so that Caffe can then be imported as an external library in your Python project.
+    Checkout Digits from its Github repo.
+    Open a Windows Command Prompt, go to the folder where Digits is installed and run this: python -m pip install -r requirements.txt
+    Then, run this: python digits-devserver and you'll be able to see Digits on http://localhost:5000 and use it normally. I wasn't able to run the 'digits-server' bash file yet, but I guess this can also be "windows"-ized with some more dedication.
+
+Great job indeed ;)
+Thanks a gazillion ;-)
