@@ -1,0 +1,53 @@
+
+https://devblogs.nvidia.com/parallelforall/image-segmentation-using-digits-5/
+--------------------------------------------------------------------------------------
+In a CNN it is common practice to split the network into two parts:in the first part, the feature extractor, the data goes through several convolutional layers to extract progressively more complex and abstract features. Convolutional layers are typically interspersed with non-linear transfer functions and pooling layers. Each convolutional layer can be seen as a set of image filters that trigger a high response on a particular pattern. For example, Figure 6 shows a representation of the filters from the first convolutional layer in Alexnet and the activations (the outputs) on a dummy image that contains simple shapes (amusingly, AlexNet classifies the image as a wall clock!). Those filters trigger a high response on shapes like horizontal and vertical edges and corners. For instance, have a look at the filter at the bottom left corner which looks like black-and-white vertical stripes. Now look at the corresponding activations and the high response on vertical lines. Similarly, the next filter immediately at the right shows a high response on oblique lines. Further convolutional layers down the network will be able to trigger a high response on more elaborate shapes like polygons and eventually learn to detect textures and various constituents of natural objects. In a convolutional layer, every output is computed by applying each filter to a window (also known as the receptive field) in the input, sliding the window by the layer stride until the full input has been processed. The receptive field has the same size as the filters. See Figure 7 for an illustration of this behavior. Note that the input window spans across all channels of the input image.
+Figure 6:Alexnet conv1 layer, as represented in DIGITS. From top to bottom: data layer (input); visualization of the filters conv1; activations (output) of conv1.
+Figure 6: AlexNet conv1 layer, as represented in DIGITS. From top to bottom: data layer (input); visualization of the filters of conv1; activations (output) of conv1.
+Figure 7: Left: An example input volume in red and an example volume of neurons in the first Convolutional layer. Each neuron in the convolutional layer is connected only to a local region in the input volume spatially, but to the full depth (i.e. all color channels). Note, there are multiple neurons (5 in this example) along the depth, all looking at the same region in the input Right: The neurons still compute a dot product of their weights with the input followed by a non-linearity, but their connectivity is now restricted to be local spatially. Source: Stanford CS231 course.
+Figure 7: Left: An example input volume in red and an example volume of neurons in the first Convolutional layer. Each neuron in the convolutional layer is connected only to a local region in the input volume spatially, but to the full depth (i.e. all color channels). Note, there are multiple neurons (5 in this example) along the depth, all looking at the same region in the input. Right: The neurons still compute a dot product of their weights with the input followed by a non-linearity, but their connectivity is now restricted to be local spatially. Source: Stanford CS231 course.
+
+In the second and final part of a CNN, the classifier consists of a number of fully-connected layers, the first of which receives its inputs from the feature extractor. These layers learn complex relationships between features to endow the network with a high-level understanding of the image contents. For example the presence of big eyes and fur might have the network lean towards a cat. How exactly the network makes sense of these features is somewhat magical and another trait of the pure beauty of deep learning. This lack of explainability is sometimes criticized but it is not unlike the way the human brain functions: would you be able to explain how you know that an image of a cat is not an image of a dog?
+
+Fully Convolutional Networks (FCN), as their name implies, consist of only convolutional layers and the occasional non-parametric layers mentioned above. How can eliminating fully-connected layers create a seemingly more powerful model? To answer this question let’s ponder another.
+Figure 8: Input, weights and activations of Alexnet’s first fully-connected layer (fc6), as represented in DIGITS.
+Figure 8: Input, weights and activations of Alexnet’s first fully-connected layer (fc6), as represented in DIGITS.
+
+The question is: what is the difference between a fully-connected layer and a convolutional layer? Well that’s simple: in a fully-connected layer, every output neuron computes a weighted sum of the values in the input. In contrast, in a convolutional layer, every filter computes a weighted sum of the values in the receptive field. Wait, isn’t that exactly the same thing? Yes, but only if the input to the layer has the same size as the receptive field. If the input is larger than the receptive field then the convolutional layer slides its input window and computes another weighted sum. This process repeats until the input image has been scanned left to right, top to bottom. In the end, each filter generates a matrix of activations; each such matrix is called a feature map.
+
+This provides a clue: to replace a fully-connected layer with an equivalent convolutional layer, just set the size of the filters to the size of the input to the layer, and use as many filters as there are neurons in the fully-connected layer. I’ll demonstrate this on the first fully-connected layer in Alexnet (fc6): see Figure 8 for a DIGITS visualization of the layers of interest. You can see that fc6 receives its input from pool5 and the shape of the input is a 256-channel 6×6 image. Besides, the activations at fc6 are a 4096-long vector, which means that fc6 has 4096 output neurons. It follows that if I want to replace fc6 with an equivalent convolutional layer, all I have to do is set the filter size to 6×6 and the number of output feature maps to 4096. As a small digression, how many trainable parameters do you think this layer would have? For every filter there is one bias term plus one weight per number in the receptive field. The receptive field has a depth of 256 and a size of 6×6 therefore there are 256x6x6+1=9217 parameters per filter. Since there are 4096 filters, the total number of parameters for this layer is 37,752,832. That is exactly the number of parameters that DIGITS says fc6 has. All is well so far.
+
+In practice, Replacing the layer is simple. If you are using Caffe, just replace the definition on the left in Table 1 with the definition on the right.
+Table 1: Left: fc6 definition, Right: equivalent conv6 definition with a kernel size of 6 because the input to fc6 is a 6×6 image patch.
+
+layer {
+  name: "fc6"
+  type: "InnerProduct"
+  bottom: "pool5"
+  top: "fc6"
+  inner_product_param {
+    num_output: 4096
+
+  }
+}
+
+	
+
+layer {
+  name: "conv6"
+  type: "Convolution"
+  bottom: "pool5"
+  top: "conv6"
+  convolution_param {
+    num_output: 4096
+    kernel_size: 6
+  }
+}
+
+Armed with this knowledge, you can now proceed to converting all the fully-connected layers in Alexnet with their corresponding convolutional layers. Note that you don’t have to use DIGITS to figure out the shapes of the input to those layers; you could calculate them manually. As fun as that may sound, I assure you that you will run out of patience if you need to do this for the 16 layers (plus intervening pooling layers) in VGG-16. Not to mention the fact that you will inevitably lose the scratchpad you used to scribble your notes. Besides, as a Deep Learning fan, you should be comfortable with the idea of letting a machine do the work for you. So let DIGITS do the work for you.
+
+The resulting FCN has exactly the same number of learnable parameters, the same expressivity and the same computational complexity as the base CNN. Given the same input, it will generate the same output. You might wonder: why go through the trouble of converting the model? Well, “convolutionalizing” the base CNN introduces a great amount of flexibility. The model is no longer constrained to operate on a fixed input size (224×224 pixels in Alexnet). It can process larger images by scanning through the input as if sliding a window, and instead of producing a single probability distribution for the whole input, the model generates one per 224×224 window. The output of the network is a tensor with shape KxHxW where K is the number of classes, H is the number of sliding windows along the vertical axis and W is the number of sliding windows along the horizontal axis.
+
+A note on computational efficiency: in theory you could implement the sliding window naively by repeatedly selecting patches of an image and feeding them to a CNN for processing. In practice, this would be computationally very inefficient: as you slide the window incrementally, there is only a small number of new pixels to see at each step. Yet, each patch would need to be fully processed by the CNN, even in the presence of a large overlap between successive patches. You would therefore end up processing each pixel many times. In an FCN, since those computations are all happening within the network, only the minimum number of operations gets to execute so the whole process is orders of magnitude faster.
+
+In summary, that brings us to our first milestone: adding two spatial dimensions to the output of the classification network. In the next section I’ll show you how to further refine the model.
