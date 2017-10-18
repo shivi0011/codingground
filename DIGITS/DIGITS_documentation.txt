@@ -51,3 +51,61 @@ The resulting FCN has exactly the same number of learnable parameters, the same 
 A note on computational efficiency: in theory you could implement the sliding window naively by repeatedly selecting patches of an image and feeding them to a CNN for processing. In practice, this would be computationally very inefficient: as you slide the window incrementally, there is only a small number of new pixels to see at each step. Yet, each patch would need to be fully processed by the CNN, even in the presence of a large overlap between successive patches. You would therefore end up processing each pixel many times. In an FCN, since those computations are all happening within the network, only the minimum number of operations gets to execute so the whole process is orders of magnitude faster.
 
 In summary, that brings us to our first milestone: adding two spatial dimensions to the output of the classification network. In the next section I’ll show you how to further refine the model.
+
+
+================================================================================================================================
+Caffe:
+~~~~~~~
+Caffe is a deep learning framework made with expression, speed, and modularity in mind. It is developed by the Berkeley Vision and Learning Center (BVLC) and community contributors.
+NVCaffe
+
+NVIDIA Caffe (NVIDIA Corporation ©2017) is an NVIDIA-maintained fork of BVLC Caffe tuned for NVIDIA GPUs, particularly in multi-GPU configurations. Here are the major features:
+
+    16 bit (half) floating point train and inference support.
+    Mixed-precision support. It allows to store and/or compute data in either 64, 32 or 16 bit formats. Precision can be defined for every layer (forward and backward passes might be different too), or it can be set for the whole Net.
+    Integration with cuDNN v6.
+    Automatic selection of the best cuDNN convolution algorithm.
+    Integration with v1.3.4 of NCCL library for improved multi-GPU scaling.
+    Optimized GPU memory management for data and parameters storage, I/O buffers and workspace for convolutional layers.
+    Parallel data parser and transformer for improved I/O performance.
+    Parallel back propagation and gradient reduction on multi-GPU systems.
+    Fast solvers implementation with fused CUDA kernels for weights and history update.
+    Multi-GPU test phase for even memory load across multiple GPUs.
+    Backward compatibility with BVLC Caffe and NVCaffe 0.15.
+    Extended set of optimized models (including 16 bit floating point examples).
+
+
+
+
+
+
+
+
+
+
+https://www.joyofdata.de/blog/gpu-powered-deeplearning-with-nvidia-digits/
+Bash Script for rotation and flip
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+for f in ~/data/train/*.jpeg
+do
+  convert $f -fuzz 15% -trim -resize 256x256 \
+    -background black -gravity center -extent 256x256 \
+    ~/data/training_0/train_sm/$(basename -s .jpeg $f).png
+done
+
+for f in ~/data/training_0/train_sm/*.png
+do
+  convert $f -rotate 180 ~/data/training_0/train_sm_180/$(basename $f)
+done
+
+for f in ~/data/training_0/train_sm/*.png
+do
+  convert $f -flop ~/data/training_0/train_sm_flop/$(basename $f)
+done
+
+for f in ~/data/training_0/train_sm_180/*.png
+do
+  convert $f -flop ~/data/training_0/train_sm_180_flop/$(basename $f)
+done
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
