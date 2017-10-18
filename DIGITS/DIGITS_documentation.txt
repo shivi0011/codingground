@@ -109,3 +109,16 @@ do
 done
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+https://github.com/humphd/have-fun-with-machine-learning/blob/master/README.md   BEST of the BEST on Github
+*****************************************************************************************************************
+
+opened sites
+====================
+https://groups.google.com/forum/#!topic/digits-users/sO2D5sERGgw
+https://www.deepdetect.com
+https://github.com/NVIDIA/DIGITS/commit/9ff246eed47ec04461956b133495260855168e2e
+https://github.com/NVIDIA/DIGITS/commit/245285f96e7cac0d805289c20732319df7a17a57
+https://arxiv.org/pdf/1409.4842.pdf
+https://groups.google.com/forum/#!topic/digits-users/bqtMKRrCn5w
+https://www.joyofdata.de/blog/gpu-powered-deeplearning-with-nvidia-digits/
