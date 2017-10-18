@@ -1,1 +1,716 @@
-hi
+to convert from .jp2 to .raw
+----------------------------------------
+j2k_to_image -i C2CPA.jp2 -o out.raw
+
+
+rename multiple files
+--------------------------------------------------------------
+ls *.jpg | cat -n | while read n f; do mv "$f" "$n.jpg"; done
+where jpg is the extension of files in a folder
+--------------------------------------------------------------
+
+
+File formats supported by DIGITS
+---------------------------------
+PNG, JPEG, BMP, PPM
+Also for any other kind of file support we can ask to DIGITS community to add into the existing version of DIGITS.
+
+
+.Img to .jpeg conversion
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. Make .hdr file with the same name as of .img or .band4
+2. Modify #f pixels and #f scans in .hdr file
+
+   .Img and .band4 are just a format for raw files.
+
+		-------------ENVI .HDR FILE-------------------
+		ENVI
+		description = {
+		  File Imported into ENVI.}
+		samples = 16196		modify this (#f scans)
+		lines   = 38152		modify this (#f pixels)
+		bands   = 1
+		header offset = 2048
+		file type = ENVI Standard
+		data type = 2
+		interleave = bsq
+		sensor type = Unknown
+		byte order = 0
+		wavelength units = Unknown
+		------------------------------------------------
+
+3. How to get the #f scans and #f pixels
+   Use below command:-
+   $ more filename.Img
+ex-
+$ more C2CPA000409SS000217_0101_000411_01042017DIP_RT_roi2.Img
+AdRiN2001#2048  28  62  90  8 188 11 5 12 5 16 6 18 3 19 8 20 10 21 1 22 1 23 1 50 4 10 2 33.151085 130.279912 0.000000 33.135153 130.387746 0.000000 32.879091 130.335797 0.000000 32.895024 130.227963 0.0
+00000 -1.000000 -1.000000 -1.000000 0 0 0 15768 45158 15768 45158 0 -1 -1 4515915769WGS-84GEO0.637995-90.000000008NULL-1
+                                          ----- -----
+					     +1    +1
+					~~~~~~~ ~~~~~~
+					  15769 45159
+					Samples lines		          lines samples
+					pixels  scans
+from last 7th and 8th positions are these parameters  
+
+gdal_translate C2CPA000409SS000217_0101_000411_01042017DIP_RT_roi2.Img -scale -exponent 0.72 -srcwin 0 0 15769 8000 -of JPEG -ot Byte C2CPA000409SS000217_0101_000411_01042017DIP_RT_roi2.jpeg
+
+to get the 12K jpeg image
+gdal_translate C2CPA000409SS000217_0101_000411_01042017DIP_RT_roi2.Img -scale -exponent 0.72 -srcwin 0 0 15769 12000 -of JPEG -ot Byte C2CPA000409SS000217_0101_000411_01042017DIP_RT_roi2.jpeg
+
+
+-scale -exponent 0.72 is used to stretch the image using the exponent scaling 
+-srcwin is to locate the source window from where it needs to capture the image
+-of is output format which is given as JPEG
+-ot is output type given as Byte
+
+
+
+=========================================================================================================================================================
+
+DIGITS
+------
+you can find all your data in the below folder which you have feeded in DIGITS.
+jetpack/DIGITS/digits/jobs/test.txt
+			   train.txt
+			   val.txt
+
+now you can use this test.txt for finding the overall loss using the below command. -- using REST API of DIGITS.
+curl localhost:5000/models/images/classification/classify_many.json -XPOST -F job_id=put_job_id_from_DIGITS -F image_list=@/path/to/test.txt
+
+
+
+=========================================================****===============================================================================
+
+To test single image or list of image in cmd -- in order to track the time taken by your model for classifying an image
+-------------------------------------------------------
+
+goto jetpack/DIGITS/examples/classification and use below python sript to test any image
+use_archive.py
+
+$ ./use_archive.py -h      		to get the help
+$ ./use_archive.py digits-model.tar.gz test_image.jpg
+
+
+==========================================================================================================================================
+
+Top-5 Accuracy:
+---------------
+top-5 error rate is the fraction of test images for which the correct label is not among the 5 labels considered most probabel by the mode.
+In case of top-5 scroe we check if the target label is one of your top 5 predictions (the 5 classes with the highest probability)
+
+Top-1 Accuracy:
+---------------
+In case of top-1 score, we check if the top class (the one with the highest probabilty) is the same as the target label.
+
+our classifier gives us a probability for each class. Lets say we have only "cat", "dog", "house", "mouse" classes. Then the classifier gives something like
+0.1; 0.2; 0.0; 0.7
+
+as a result.
+The Top-1 class is "mouse" (has highest prob).
+The Top-2 class is "dog: mouse" (are top 2 highest prob). If the correct class was "dog", it would be counted as "correct" for the Top-2 accuracy and wrong for Top-1 accuracy.
+
+Hence, in a classification problem with k possible classes, every classifier has 100% top-k accuracy. The normal accuracy is top-1.
+
+========================================================================================================================================
+
+Result analysis of our models and approaches:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+GoogleNet-SatImages-5 --accuracy  - 79
+			epochs -  100			 
+	
+			Number of Categories -   8 - airplane, plains, runway, waterbody, cloud, mountains, tree, building
+			Training Images -    1732
+			Validation Images -  461 (20.0%) 
+			Test images -   115 (5.0%) 
+			Analysis: more irregular size images was there
+	
+
+GoogleNet-SatImages-6 --accuracy 88.1
+			epochs -  30			 
+			classes - 8 -- airplane, plains, forest, runway, urban, waterbody, cloud, mountains
+
+
+			Number of Categories -   8
+			Training Images -    1617
+			Validation Images -    462 (20.0%) 
+			Test images -    230 (10.0%) 
+
+GoogleNet-SatImages-7 --given BEST accuracy till now 96.0  
+			epochs - 100
+			classes - 6  -- airplane, plains, desert, road, forest, cloud 
+			separated waterbody and mountains as these are of large pixels 
+			refined the dataset again
+
+			Number of Categories - 6
+			Training Images -  1218
+			Validation Images - 348 (20.0%) 
+			Test images -  173 (10.0%) 
+
+
+			Confusion matrix  for test data
+				airplane cloud 	desert 	forest 	plains 	road 	Per-class accuracy
+			airplane31 	0 	0 	0 	0 	0 	100.0%
+			cloud 	0 	17 	0 	0 	1 	0 	94.44%
+			desert 	0 	0 	24 	0 	0 	0 	100.0%
+			forest 	0 	0 	0 	20 	0 	0 	100.0%
+			plains 	0 	1 	0 	0 	56 	1 	96.55%
+			road 	0 	0 	0 	0 	1 	21 	95.45%
+
+
+GoogleNet-SatImages-8 --accuracy  - 86.3
+			epochs -  100	
+			introduced 2 new classes -- fields, tracks made from forest and roads respectively
+			no other changes from the SatImages-7
+
+
+			Number of Categories - 8
+			Training Images -   1205
+			Validation Images -  344 (20.0%) 
+			Test images -   173 (10.0%) 
+
+
+			Confusion matrix
+				airplane 	cloud 	desert 	fields 	forest 	plains 	road 	tracks 	Per-class accuracy
+			airplane 	31 	0 	0 	0 	0 /home/adrin/data/SHIVICLASS/newDataset/airplane/Link to aaa1/air_craft_4	0 	0 	0 	100.0%
+			cloud 	1 	15 	0 	0 	0 	0 	1 	0 	88.24%
+			desert 	0 	0 	24 	0 	0 	0 	0 	0 	100.0%
+			fields 	0 	0 	0 	38 	0 	0 	0 	2 	95.0%
+			forest 	0 	0 	0 	0 	20 	0 	0 	0 	100.0%
+			plains 	0 	0 	0 	4 	0 	15 	0 	0 	78.95%
+			road 	0 	0 	0 	0 	0 	0 	4 	3 	57.14%
+			tracks 	0 	0 	0 	2 	0 	1 	0 	12 	80.0%
+
+
+			Some images were mixed..
+		
+
+GoogleNet-SatImages-9 --accuracy  - 93.84
+			epochs -  100
+
+			Number of Categories - 8
+			Training Images -   1484
+			Validation Images - 424 (20.0%) 
+			Test images -  211 (10.0%) 
+
+
+
+			Top-1 accuracy
+			    93.84%
+
+			Top-5 accuracy
+			    100.0%
+
+
+			Confusion matrix
+				airplane cloud 	desert 	fields 	forest 	plains 	road 	tracks 	Per-class accuracy
+			airplane 	31 	0 	0 	0 	0 	0 	0 	0 	100.0%
+			cloud 	0 	15 	0 	0 	0 	1 	0 	0 	93.75%
+			desert 	0 	0 	24 	0 	0 	0 	0 	0 	100.0%
+			fields 	0 	0 	0 	77 	1 	1 	0 	0 	97.47%
+			forest 	0 	0 	0 	0 	20 	0 	0 	0 	100.0%
+			plains 	0 	0 	0 	3 	0 	16 	0 	0 	84.21%
+			road 	0 	0 	0 	1 	0 	1 	2 	3 	28.57%
+			tracks 	0 	0 	0 	2 	0 	0 	0 	13 	86.67%
+		
+			tracks and roads are colliding so combining both of them in next.
+
+
+GoogleNet-SatImages-10 -accuracy  - 94.1
+			epochs -  100
+
+			Number of Categories
+			    9
+			Training Images
+			    1781
+			Validation Images
+			    548 (20.0%) 
+			Test images
+			    411 (15.0%) 
+
+GoogleNet-SatImages-10 -accuracy  - 90
+			epochs -  100
+
+			Create DB (train)
+			    2881 images 
+			Create DB (val)
+			    360 images 
+			Create DB (test)
+			    359 images 
+
+			train - 10%
+			test - 10%
+
+
+			Top-1 accuracy
+			    89.97%
+
+			Top-5 accuracy
+			    99.72%
+
+			Confusion matrix
+				airplane cloud 	desert 	fields 	forest 	mountains plains pond 	road 	urban 	Per-class accuracy
+			airplane 28 	0 	0 	0 	0 	0 	1 	0 	1 	1 	90.32%
+			cloud 	1 	14 	0 	0 	0 	0 	1 	0 	0 	0 	87.5%
+			desert 	0 	0 	42 	2 	0 	1 	0 	0 	0 	0 	93.33%
+			fields 	0 	0 	0 	77 	0 	1 	2 	3 	2 	0 	90.59%
+			forest 	0 	0 	0 	1 	44 	1 	0 	0 	0 	0 	95.65%
+			mountains 0 	0 	4 	0 	2 	27 	0 	0 	2 	0       77.14%
+			plains 	0 	0 	1 	2 	0 	0 	17 	0 	0 	0 	85.0%
+			pond 	0 	0 	0 	2 	0 	0 	0 	27 	0 	0 	93.1%
+			road 	0 	0 	0 	1 	0 	0 	0 	0 	21 	1 	91.3%
+			urban 	0 	0 	1 	0 	0 	2 	0 	0 	0 	26 	89.66%
+
+
+In SatImages-10, tried with colored downloaded images but not given good results for the testing of our cartosat data, so removing those images in next exp.
+
+
+GoogleNet-SatImages-11 -accuracy  - 88
+			epochs -  100
+
+			Create DB (train)
+			    2645 images 
+			Create DB (val)
+			    756 images 
+			Create DB (test)
+			    378 images
+
+
+GoogleNet-SatImages-12 -accuracy  - 90
+			epochs -  100
+
+			Image Type
+			GRAYSCALE 
+			DB backend
+			    lmdb
+			
+			Number of Categories
+			    10
+			Training Images
+			    1293
+			Validation Images
+			    370 (20.0%) 
+			Test images
+			    183 (10.0%) 
+
+
+
+GoogleNet-SatImages-13 -accuracy  - 96.5
+			epochs -  100
+
+			separated the data sets into large and small in order to get the increased accuracy.
+
+
+			Top-1 accuracy
+			    95.28%
+
+			Top-5 accuracy
+			    100.0%
+
+
+			Confusion matrix
+				airplane 	cloud small 	plains 	road 	urban 	Per-class accuracy
+			airplane 	31 	0 	0 	0 	0 	100.0%
+			cloud small 	0 	15 	0 	0 	0 	100.0%
+			plains 	0 	1 	15 	3 	0 	78.95%
+			road 	1 	0 	0 	17 	0 	94.44%
+			urban 	0 	0 	0 	0 	23 	100.0%
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+23 Sept: tried with 1K images making dataset of desert, river, canal, mountains, grassy mountains, ponds
+
+modifications for pond: taken ponds depending on the size of oval or circular shape -- not considering the 256 or 512 kinda things for this.
+
+for mountains: taken 1K mountains
+
+given good results with respect to large images
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+25 Sept: tried with merging 256 images along with smaller one having 64 or 100 resolutions.
+	 
+
+	 tried with merging 256 images with 1K images
+
+         not given as expected result.
+	
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Commands for tiling any jpg image into 256x256 segments:   
+for file in `ls -l *.jpg` ; do python generic_tiled.py $file 256  ; done
+
+convert from tif to jpg
+gdal_translate -of JPEG input.tiff output.jpg
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Spatial resolution -
+----------------------
+refers to the size of one pixel on the ground. For example 15 meters means that one pixel on the image corresponds to a square of 15 by 15 meters on the ground. This is also sometimes referred to as Ground Sample Distance (GSD). Temporal resolution refers to the how often data of the same area is collected. This is typically referred to as Revisit Time.
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Python script for rotation:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import PIL,os
+from PIL import Image
+picture=Image.open('179.jpg')
+picture.rotate(90).save('179_L.jpg') 
+picture.rotate(180).save('179_D.jpg') 
+picture.rotate(270).save('179_R.jpg') 
+
+----------------------------script for rotation with extension removal--------------------------------------------------------------------------------------------------
+import PIL,os,sys
+from PIL import Image
+
+picture=Image.open(sys.argv[1])
+
+prefix = os.path.splitext(sys.argv[1])[0]
+
+picture.rotate(90).save(prefix+'_L.jpg') 
+picture.rotate(180).save(prefix+'_D.jpg') 
+picture.rotate(270).save(prefix+'_R.jpg') 
+
+'''print (os.path.splitext(sys.argv[1])[0])   to exclude the file extension''' 
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+Python script for tiling and removing the file extension:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+import os, sys, PIL
+from gdalconst import *
+from osgeo import gdal
+
+dset = gdal.Open(sys.argv[1])
+'''
+from PIL import Image
+picture=Image.open(sys.argv[1])
+'''
+prefix = os.path.splitext(sys.argv[1])[0]
+
+width = dset.RasterXSize
+height = dset.RasterYSize
+
+print width, 'x', height
+
+tilesize = int(sys.argv[2])
+
+for i in range(0,width,tilesize):
+	for j in range(0,height, tilesize):
+		w = min(1+tilesize,width)-i
+		h = min(1+tilesize,height)-j
+		gdaltranString = "gdal_translate -of JPEG -srcwin "+str(i)+", "+str(j)+", "+str(tilesize)+", "+str(tilesize)+" "+sys.argv[1]+" "+prefix+"_"+str(i)+"_"+str(j)+".jpg"
+		os.system(gdaltranString)
+		
+removeextrafiles = "rm *.aux.xml"
+os.system(removeextrafiles)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+epoch analysis in DIGITS
+~~~~~~~~~~~~~~~~~~~~~~~~~
+for the dataset of 3000 to 4000 images it should run for at least 150 epochs. After 150 epochs, it will start converging and get stablize. Validation accuracy will also go high.
+
+Learning rate analysis
+~~~~~~~~~~~~~~~~~~~~~~~
+tried with .01 and .001 and .0001 on approx 3000 images
+
+
+Experiment done:
+images: approx 3000 for training, validation and testing
+time lapsed: 5 h
+epochs = 300
+
+accuracy with .001 learning rate = .97
+loss for training with .001 learning rate = 3.38
+
+accuracy for .01  learning rate= .93
+loss for training with .001  learning rate= 3.76
+
+Hence .001 learning rate is good as compared to .01 as it will have lesser loss also.
+After doing several experiments, we found that 150 epochs would be good for training the data having the 3000-5000 images.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Added C2C mountains, plains, rivers, seashores, forest
+added new class : iceland 
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Oct 3
+-------
+area features: cloud, desert, mountain, fields, forest, plain, pond
+
+linear features : road, canal, rivers, beach
+
+man made objects features: airplane, ship, urban
+
+making 3 separate models and training them on respective datasets.
+
+With less classes, model is giving better results, having less discripencies and less confusion.
+Problem: how to converge all in one...
+
+so came back to our merged approach.
+
+d_area_withRotation has performed well as compared to d_area without rotation -- roatated images with my rotation python script.
+
+process images in batch of at least 5 gives better results in digit.
+
+Oct 5
+-----------
+removed all 64x64 from almost all datasets.
+added C2C dataset in urban and clouds in the formats of 256x256
+
+
+Oct 6
+-----------
+added own python layer in DIGITS to do all the preprocessing for the enhancement of model accuracy.
+This python layer will do the 90 degree rotation, shearing (shifting of each pixel wrt to some axis), augmentation(adding of particular pixel value to each of the pixel) -- need to be modified
+results are somewhat better but still needs improvement on the grounds of dataset.
+
+Dataset need to be redefined, it must have variations in a single class images.
+
+
+save below file as rotation_layer.py and add it as client side python layer in the DIGIT while going for training the model.
+		----------------------------------------------------------------------------------
+		import numpy as np
+		import caffe
+		import random
+
+		def doAugmenttion(img):
+		    return np.rot90(img, random.randrange(4))
+
+		class RotationLayer(caffe.Layer):
+		    def setup(self, bottom, top):
+			assert len(bottom) == 1, 'requires a single layer.bottom'
+			assert bottom[0].data.ndim >= 3, 'requires image data'
+			assert len(top) == 1, 'requires a single layer.top'
+
+		    def reshape(self, bottom, top):
+			# Copy shape from bottom
+			top[0].reshape(*bottom[0].data.shape)
+
+		    def forward(self, bottom, top):
+			# Copy all of the data
+			top[0].data[...] = bottom[0].data[...]
+
+			for ii in xrange(0, top[0].data.shape[0]):
+			    imin = top[0].data[ii, :, :, :].transpose(1, 2, 0)
+			    top[0].data[ii, :, :, :] = doAugmenttion(imin).transpose(2, 0, 1)
+
+		    def backward(self, top, propagate_down, bottom):
+			pass
+
+		----------------------------------------------------------------------------------
+Include this layer just after data layer while customizing the DIGITS interface....means after the first layer in DIGITS
+
+		    layer {
+		      name: "rotation_layer"
+		      type: "Python"
+		      bottom: "data"
+		      top: "data"
+		      include {
+		      phase: TRAIN
+		      }
+		      python_param {
+			module: "digits_python_layers"
+			layer: "RotationLayer"
+		      }
+		    }
+
+
+		=====================after==============================
+		# GoogLeNet
+		name: "GoogleNet"
+		layer {
+		  name: "train-data"
+		  type: "Data"
+		  top: "data"
+		  top: "label"
+		  transform_param {
+		    mirror: true
+		    crop_size: 224
+		  }
+		 
+		  data_param {
+		    batch_size: 32
+		  }
+		  include { stage: "train" }
+		}
+
+		 layer {
+		      name: "rotation_layer"
+		      type: "Python"
+		      bottom: "data"
+		      top: "data"
+		      include {
+		      phase: TRAIN
+		      }
+		      python_param {
+			module: "digits_python_layers"
+			layer: "RotationLayer"
+		      }
+		    }
+	     ---------------------------------------------------------------------------------------------
+
+
+
+
+=============================================================================================================
+shutdown system after a particular time:
+
+sudo shutdown -P +60			ie. after 1 hr
+sudo shutdown -P 1:00 			ie. at 1 AM
+sudo shutdown -P now
+
+to cancel 
+sudo shutdown -c
+============================================================================================================
+
+in D-Area3py --->  mountains are matching with desert
+		deserts are having very less variant data set...so removing desert
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+13 Oct 2017 ---::::::::::::::::TASK:::::::::::::::
+-----------
+Add gdal command for scaling every tiled image so that it wont have much variations in brightness or in contrast and then it will give the correct results.
+
+Make simpler GUI for testing images and in the browser itself there should be some options to validate the image by checking there itself and to add it in the training folder.
+
+
+
+
+
+
+
+
+
+
+=================================================================Results and Observation till now===============================================================================================
+
+We got overall 60-70% accuracy for testing a new set of images.
+We have used Google's GoogleNet model trained on 50000 images.
+
+
+
+For our dataset, we are getting top-5 accuracy as 99-100% and top-1 accuracy as 70%.
+
+
+We have tried different strategies for preprocessing the data in order to enhance the overall accuracy of our model.
+
+1. learning rates: 
+	Initially tried with default learning rate which is 0.01
+	Then tried with slower learning rate like 0.001 or 0.0001 
+	There must be some sort of balance in between the learning rates and the time it takes. As with lower learning rates till some extent it gives good results but if we lower the learning rates more
+	then it starts giving bad performance by consuming ample amount of time.
+	So after doing various expriment we found that for the dataset containing 3000 to 5000 images, learning rate of 0.001 gives good results. 
+2. epochs: Number of times the model trained on our dataset
+	   After performing some experiments we found that 150 to 200 is good for our case.
+3. Adding an additional python layer:
+	We have added a client side python layer which is basically doing the various things like rotation of training images 
+	a. data augmentation -- adding a particular pixel value to each of the pixel of image
+	b. shearing of pixels -- displacement of each of the pixel of image with respect to a random axis
+	c. rotation of image -- rotate the image by 90 degree in a random direction provided by the random function
+4. Batches:
+	Training images will be feeded to the neural net (GoogleNet) for training purposes.
+	Batches defines the number of images are getting into the neural net in one shot.
+	It should not be more or less, depending upon the size of the training set.  
+5. 
+
+
+
+
+DIGITS is simply a UI (User Interface) that sits on top of caffe.
+
+The outut of a image classification model is discrete probability distribution: one number between 0 and 1 -- a probability for each class the model is trained to recognise.
+DIGITS is using a pretrained model named GooleNet which is nothing but a CNN (Convolutional Neural Network). CNN is normally having two phases -- in forst phase it does the feature extraction and in second phase data goes through several convolutional layers to extract progressively more complex and abstract features. Convolutional layers are typically interspersed with non-linear transfer functions and pooling layers.
+
+
+
+????
+what are the parameters we can add in python layer in digits?
+
+How to modify the other layers of any model like GoogleNet for averaging/enhancing the results?
+
+Implement your own model using keras. (refer keras blog)
+
+
+
+
+
+
+
+
+=======================================================Rename script===================================================================
+#! /bin/sh
+
+#before running this create a folder named 'mergeAll' at the same place where these folders are
+cd cloud
+ls *.jpg | cat -n |while read n f; do mv "$f" "cloud_$n.jpg"; done
+mv *.* ../mergeAll
+
+cd ..
+cd fields
+ls *.jpg | cat -n |while read n f; do mv "$f" "fields_$n.jpg"; done
+mv *.* ../mergeAll
+
+cd ..
+cd forest
+ls *.jpg | cat -n |while read n f; do mv "$f" "forest_$n.jpg"; done
+mv *.* ../mergeAll
+
+cd ..
+cd mountains
+ls *.jpg | cat -n |while read n f; do mv "$f" "mountains_$n.jpg"; done
+mv *.* ../mergeAll
+
+cd ..
+cd ponds
+ls *.jpg | cat -n |while read n f; do mv "$f" "ponds_$n.jpg"; done
+mv *.* ../mergeAll
+
+cd ..
+cd airplane
+ls *.jpg | cat -n |while read n f; do mv "$f" "airplane_$n.jpg"; done
+mv *.* ../mergeAll
+
+cd ..
+cd urban
+ls *.jpg | cat -n |while read n f; do mv "$f" "urban_$n.jpg"; done
+mv *.* ../mergeAll
+
+
+#give permission to this script by following below command
+# $ chmod +x rename.sh
+# $ ./rename 			-- to run the script
+============================================================================================================================================================
+
+
+To create folder by reading names from a file
+while read line; do mkdir "$line"; done <in
+
+
+To create files by reading names from a file
+while read line; do touch "$line"; done <in
+
+=======================================================================================================================================================
+
+Binary Classification Problem:
+Airplane: give images of all types of airplanes
+NotAirplane: give other images like land, mountain, water bodies
+
+
+
