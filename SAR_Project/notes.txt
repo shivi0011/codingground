@@ -1,0 +1,38 @@
+ Driven by venture capital and advancements in technology, the field of remote sensing is in constant evolution; satellites are getting smaller and cheaper and images are becoming more accessible.
+There are many use cases for analytics on satellite data ranging from monitoring of mining sites to tracking of shipments—often with machine learning at the core of the solution. When applying data science methods to satellite data there are four typical challenges that often arise:
+
+    The data format: Satellite images are usually stored as GeoTIFF, which is optimised for storing large geo-referenced images. Typical big data tools are not designed for this type of data so it is often required to develop custom interfaces.
+    The size of data: Depending on the resolution, images can be in the tens of gigabytes, and with near-daily updates a collection of satellite images can quickly reach multiple terabytes.
+    Unconventional machine learning: Since remote sensing still is a niche application of data science, many out-of-the-box machine learning methods do not achieve acceptable accuracies.
+    Embedding predictions into the business: The most important challenge with data science is to identify the valuable use-case for the business and to design the solution to fit in with existing processes.
+
+By teaming up data scientists, engineers and remote sensing experts Capgemini delivered machine learning on satellite data that can actually transform businesses. To illustrate how this may look like and how we solve the four challenges I would like to present one of my recent engagements.
+Detecting Trees with Trees
+We worked with an organisation that specialises in using satellite imagery to assess forestry in the UK and deals with restocking of woodland across Great Britain. About 30% of the operational budget is spent on monitoring sites with newly planted trees through on-site inspections. Due to constraints in budget and staff, sites can only be inspected every 5 years meaning that damages, diseases and poor tree growth are often identified too late. To overcome this problem we developed a machine learning framework that uses synthetic aperture radar (SAR) satellite images to identify woodland with newly planted trees.
+
+Young Tress vs. No Young Trees
+
+Figure 1: The gray background shows SAR backscatter data where darker values correspond to pixels with lower backscattering. The blue outline shows polygons with different woodland sites as obtained from the National Forest Estate. It is clearly very difficult to distinguish sites with young trees compared to other sites. 
+By relying on model predictions rather than on-site inspections our client expects to reduce total operational spending by 20%.
+Below we illustrate how we solved the four challenges:
+1. Working with Synthetic Aperture Radar
+SAR and optical sensors take measurements in different wavelengths; SAR uses the radar spectrum while optical uses the visible spectrum. This means that SAR and optical images contain different information and should address different use cases.
+SAR can be used to measure texture and structure of the ground making it very applicable to detecting land cultivation and tree trunks. This difference in wavelengths also means that SAR can be used to see through clouds and storms, while optical sensors cannot.
+As demonstrated in Figure 1 it is near impossible for the untrained eye to interpret this data and distinguish different types of trees. Only with extensive pre-processing and by using high-performance machine learning algorithms it is possible to extract meaningful information from these images.
+2. The Big Data Approach
+The satellite data comprises 2 years of SAR data from the Sentinel-1 mission with acquisitions approximately every 5 days. To make the raw satellite data interpretable for machine learning algorithms it must go through a series of processing steps including calibration, smoothing and noise reduction.
+We implemented all these steps using open-source technology (mainly Python and the Apache stack) making the framework horizontally scalable. As part of this we developed a custom module that enables Apache Spark to read SAR image files directly from AWS S3 and from Hadoop filesystem. The framework can be deployed in cloud environments such as Amazon Web Services and Microsoft Azure.
+3. Unconventional Machine learning
+Even after the pre-processing steps SAR backscatter data is noisy to the extent that individual pixels should be considered meaningless. In data science the art of building algorithms that extract information to be passed into machine learning models is called “feature engineering.”
+Typical computer vision methods for feature engineering are designed for optical images and hence do not apply to our use cases. Only with custom-made feature engineering it was possible to extract meaningful features from images.
+By using our feature engineering with so called tree-based machine learning algorithms achieved an 85% classification score after just a few weeks.
+4. Embedding Model Predictions into the Business
+
+Once we had built the first accurate model the important question was how to make the predictions accessible and interpretable for business analysts. The machine learning model outputs a probability that a site contains mainly young trees, which can be intuitively visualised on a map. To demonstrate the capabilities of our framework we built a web interface showing the models predictions and enabling analysts to trigger actions based on their observations.
+
+Figure 2: Screenshot of the user interface showing model predictions for various sites. If a site is labelled in dark green then this indicates the detection of newly-planted trees.
+
+For example, let’s imagine that a land-owner received a grant to restock a site, but did not follow through with it. The model would detect that his site does not contain any newly-planted trees and would hence assign a low probability. On the web interface this information is immediately accessible to analysts, who can then contact the land owner or schedule an on-site inspection.
+Summary
+
+Data science with satellite data is both a challenging big data and machine learning problem. Solutions to these challenges require expert teams of big data engineers, data scientists and remote sensing experts—when delivered successfully they can fundamentally transform a business.
