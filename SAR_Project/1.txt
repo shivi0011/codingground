@@ -6,6 +6,7 @@ http://ieeexplore.ieee.org/document/7026044/
 http://ieeexplore.ieee.org/document/1526652/?denied
 http://ieeexplore.ieee.org/document/6827934/
 
+https://rosettacode.org/wiki/Bitmap/Histogram#C -- histogram in all the language
 http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/MORSE/   -- image processing lectures as pdf
 http://citeseerx.ist.psu.edu/  --to search research papers full
 
