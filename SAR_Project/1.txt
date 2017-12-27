@@ -4,3 +4,7 @@ http://www2.compute.dtu.dk/~dmal/project.html
 http://ieeexplore.ieee.org/document/7026044/
 http://ieeexplore.ieee.org/document/1526652/?denied
 http://ieeexplore.ieee.org/document/6827934/
+
+
+https://www.capgemini.com/2017/08/how-to-do-machine-learning-on-satellite-images/
+
