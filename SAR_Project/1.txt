@@ -5,6 +5,8 @@ http://ieeexplore.ieee.org/document/7026044/
 http://ieeexplore.ieee.org/document/1526652/?denied
 http://ieeexplore.ieee.org/document/6827934/
 
+http://homepages.inf.ed.ac.uk/rbf/CVonline/LOCAL_COPIES/MORSE/   -- image processing lectures as pdf
+http://citeseerx.ist.psu.edu/  --to search research papers full
 
 https://www.capgemini.com/2017/08/how-to-do-machine-learning-on-satellite-images/
 
