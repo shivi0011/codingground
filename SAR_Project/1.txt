@@ -12,3 +12,10 @@ https://www.capgemini.com/2017/08/how-to-do-machine-learning-on-satellite-images
 
 http://in.mathworks.com/matlabcentral/fileexchange/29372-thresholding-an-image  -- MATLAB code available
 https://searchcode.com/codesearch/view/13889967/   -- MATLAB code available
+
+
+go thru
+https://www.google.co.in/search?q=SAR+image+segmentation+using+histogram&oq=SAR+image+segmentation+using+histogram&aqs=chrome..69i57j69i60.612j0j4&sourceid=chrome&ie=UTF-8
+
+
+https://stackoverflow.com/questions/7455343/displaying-histogram-pixel-values-from-pgm-image-p5-using-pure-c-without-any-i
