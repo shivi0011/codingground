@@ -11,3 +11,6 @@ https://www.hackerearth.com/practice/notes/validating-user-input-in-c/
   http://www.tutorialboneyard.com/cpp-arrays-strings/  -- good
   
   https://www.javatpoint.com/cpp-oops-concepts
+
+
+https://confluence.slac.stanford.edu/display/PSDM/How+to+access+HDF5+data+from+Python   -- plot histogram using python
