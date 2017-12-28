@@ -14,3 +14,4 @@ https://www.hackerearth.com/practice/notes/validating-user-input-in-c/
 
 
 https://confluence.slac.stanford.edu/display/PSDM/How+to+access+HDF5+data+from+Python   -- plot histogram using python
+https://stackoverflow.com/questions/28170623/how-to-read-hdf5-files-in-python   
