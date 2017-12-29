@@ -28,3 +28,5 @@ Thresholding
 https://stackoverflow.com/questions/33693423/otsu-thresholding
 https://wikivisually.com/wiki/Balanced_histogram_thresholding
 https://stackoverflow.com/questions/1871852/best-threshold-for-converting-grayscale-to-black-and-white
+https://www.codeproject.com/Articles/38319/Famous-Otsu-Thresholding-in-C -- best explanation
+https://github.com/RTimal/Otsu-Method/blob/master/Otsu/Otsu.cpp  ---- otsu's code in cpp
