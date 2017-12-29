@@ -27,3 +27,4 @@ Thresholding
 ----------------
 https://stackoverflow.com/questions/33693423/otsu-thresholding
 https://wikivisually.com/wiki/Balanced_histogram_thresholding
+https://stackoverflow.com/questions/1871852/best-threshold-for-converting-grayscale-to-black-and-white
