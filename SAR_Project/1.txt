@@ -21,3 +21,9 @@ https://www.google.co.in/search?q=SAR+image+segmentation+using+histogram&oq=SAR+
 
 
 https://stackoverflow.com/questions/7455343/displaying-histogram-pixel-values-from-pgm-image-p5-using-pure-c-without-any-i
+
+
+Thresholding
+----------------
+https://stackoverflow.com/questions/33693423/otsu-thresholding
+https://wikivisually.com/wiki/Balanced_histogram_thresholding
