@@ -16,3 +16,6 @@ https://www.hackerearth.com/practice/notes/validating-user-input-in-c/
 https://confluence.slac.stanford.edu/display/PSDM/How+to+access+HDF5+data+from+Python   -- plot histogram using python
 https://stackoverflow.com/questions/28170623/how-to-read-hdf5-files-in-python   
 http://pandas.pydata.org/pandas-docs/version/0.20/io.html#io-hdf5
+
+
+https://www.kernix.com/blog/image-classification-with-a-pre-trained-deep-neural-network_p11  ---how to do classification on readymade trained ************ goooooooooooooooooood
