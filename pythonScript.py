@@ -36,9 +36,54 @@ for path,dirs,files in os.walk(start_path):
                 
                 
                     
+                    
+https://www.pythoncentral.io/recursive-file-and-directory-manipulation-in-python-part-1/
+  
             
     
-        
+        The os.walk command is the way to loop through subfolders (and files) from a top level directory.  Example #1 is how to deal with folders, and example #2 is how to deal with the files within the folders.
+
+Example #1: This code will attempt to compress any FGDB (a .gdb folder) under the rootDir
+import os, fnmatch, arcgisscripting  
+gp = arcgisscripting.create(9.3)  
+rootDir = r"C:\temp"  
+gdbList = []  
+for dirPath, dirNames, fileNames in os.walk(rootDir, topdown=False):  
+    if fnmatch.fnmatch(dirPath, "*.gdb") == True:  
+        gdbList.append(dirPath)  
+gdbCount = len(gdbList)  
+if gdbCount == 0:  
+    print "No matching FGDBs found!"  
+else:  
+    print "Attempting to compress " + str(gdbCount) + " geodatabases..."  
+    for gdb in gdbList:  
+        try:  
+            gp.CompressFileGeodatabaseData_management(gdb)  
+            print "Compressed " + gdb + "..."  
+        except:  
+            print "ERROR: Failed to compress " + gdb + "!"  
+
+
+Example #2: This code will attempt to compress any PGDB (an .mdb file) under the rootDir
+import os, fnmatch, arcgisscripting  
+gp = arcgisscripting.create(9.3)  
+rootDir = r"C:\temp"  
+gdbList = []  
+for dirPath, dirNames, fileNames in os.walk(rootDir, topdown=False):  
+    for file in fileNames:  
+        if fnmatch.fnmatch(file, "*.mdb") == True:  
+            gdbList.append(dirPath + "\\" + file)  
+gdbCount = len(gdbList)  
+if gdbCount == 0:  
+    print "No matching PGDBs found!"  
+else:  
+    print "Attempting to compact " + str(gdbCount) + " geodatabases..."  
+    for gdb in gdbList:  
+        try:  
+            gp.Compact_management(gdb)  
+            print "Compacted " + gdb + "..."  
+        except:  
+            print "ERROR: Failed to compact " + gdb + "!"   
     
 
     
