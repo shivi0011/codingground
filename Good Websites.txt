@@ -20,3 +20,5 @@ http://pandas.pydata.org/pandas-docs/version/0.20/io.html#io-hdf5
 
 https://www.kernix.com/blog/image-classification-with-a-pre-trained-deep-neural-network_p11  ---how to do classification on readymade trained ************ goooooooooooooooooood
 https://medium.com/@sntaus/image-classification-using-deep-learning-hello-world-tutorial-a47d02fd9db1
+
+https://github.com/kevinlin311tw/caffe-augmentation ------ best***
