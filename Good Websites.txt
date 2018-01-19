@@ -23,3 +23,11 @@ https://medium.com/@sntaus/image-classification-using-deep-learning-hello-world-
 
 https://github.com/kevinlin311tw/caffe-augmentation ------ best***
 http://www.deeplearningmodel.net/  -- for comparative analysis of GoogleNet and VGGnet n others
+
+https://gogul09.github.io/software/flower-recognition-deep-learning
+
+GoogleNet
+-------------
+1.3M images
+1000 classes or categories
+
