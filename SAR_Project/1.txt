@@ -32,3 +32,5 @@ https://www.codeproject.com/Articles/38319/Famous-Otsu-Thresholding-in-C -- best
 https://github.com/RTimal/Otsu-Method/blob/master/Otsu/Otsu.cpp  ---- otsu's code in cpp
 
 https://blog.ostermiller.org/dilate-and-erode  --- best solution for morphology in c *******
+https://cran.r-project.org/web/packages/mmand/README.html
+https://www.geeksforgeeks.org/erosion-dilation-images-using-opencv-python/
