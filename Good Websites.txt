@@ -31,3 +31,5 @@ GoogleNet
 1.3M images
 1000 classes or categories
 
+
+http://joelouismarino.github.io/blog_posts/blog_googlenet_keras.html    ---- GoogleNet in Keras
