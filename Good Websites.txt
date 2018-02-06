@@ -33,3 +33,4 @@ GoogleNet
 
 
 http://joelouismarino.github.io/blog_posts/blog_googlenet_keras.html    ---- GoogleNet in Keras
+http://cv-tricks.com/image-segmentation/transpose-convolution-in-tensorflow/
