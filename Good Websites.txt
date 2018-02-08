@@ -37,3 +37,5 @@ http://cv-tricks.com/image-segmentation/transpose-convolution-in-tensorflow/
 
 
 http://lncohn.com/digits/nvidia_object_detection.html   -- DIGIT Object detection
+https://medium.com/the-downlinq/object-detection-on-spacenet-5e691961d257  -- object detection
+
