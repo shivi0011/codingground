@@ -1,3 +1,4 @@
 https://www.digitalocean.com/community/tutorials/how-to-build-a-machine-learning-classifier-in-python-with-scikit-learn
 https://www.quora.com/In-classification-how-do-you-handle-an-unbalanced-training-set
 https://www.toptal.com/machine-learning/machine-learning-theory-an-introductory-primer
+https://www.learnopencv.com/image-classification-using-convolutional-neural-networks-in-keras/
