@@ -1,0 +1,3 @@
+http://www.asimovinstitute.org/neural-network-zoo/  -- for architecture in best way
+
+https://www.datacamp.com/community/tutorials/deep-learning-python   -- interactively python data science BEST
