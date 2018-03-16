@@ -1,3 +1,5 @@
 http://www.asimovinstitute.org/neural-network-zoo/  -- for architecture in best way
 
 https://www.datacamp.com/community/tutorials/deep-learning-python   -- interactively python data science BEST
+https://blog.keras.io/keras-as-a-simplified-interface-to-tensorflow-tutorial.html
+https://github.com/keras-team/keras/wiki/Keras-2.0-release-notes
