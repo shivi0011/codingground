@@ -5,6 +5,7 @@ https://blog.keras.io/keras-as-a-simplified-interface-to-tensorflow-tutorial.htm
 https://github.com/keras-team/keras/wiki/Keras-2.0-release-notes
 
 https://github.com/keras-team/keras/blob/master/examples/mnist_cnn.py
-
-
 https://stackoverflow.com/questions/38971293/get-class-labels-from-keras-functional-model
+
+-----for larger datasets----
+https://towardsdatascience.com/keras-a-thing-you-should-know-about-keras-if-you-plan-to-train-a-deep-learning-model-on-a-large-fdd63ce66bd2
