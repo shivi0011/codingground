@@ -9,3 +9,5 @@ https://stackoverflow.com/questions/38971293/get-class-labels-from-keras-functio
 
 -----for larger datasets----
 https://towardsdatascience.com/keras-a-thing-you-should-know-about-keras-if-you-plan-to-train-a-deep-learning-model-on-a-large-fdd63ce66bd2
+
+http://www.business-science.io/business/2017/11/28/customer_churn_analysis_keras.html -- best
