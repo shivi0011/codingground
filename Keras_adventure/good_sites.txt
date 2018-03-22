@@ -15,3 +15,6 @@ http://www.business-science.io/business/2017/11/28/customer_churn_analysis_keras
 https://www.raywenderlich.com/181760/beginning-machine-learning-keras-core-ml   --  BEST tut
 https://jacobgil.github.io/deeplearning/filter-visualizations
 http://yosinski.com/deepvis
+
+https://stanford.edu/~shervine/blog/keras-how-to-generate-data-on-the-fly.html -- stanford
+https://github.com/shervinea/enzynet   -- stanford
