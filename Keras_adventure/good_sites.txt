@@ -22,3 +22,5 @@ https://ahmedbesbes.com/understanding-deep-convolutional-neural-networks-with-a-
 https://stackoverflow.com/questions/42045092/does-k-function-method-of-keras-with-tensorflow-backend-work-with-network-layers  -- intermdediate layer visualization BEST
 
 http://www.orbifold.net/default/2017/01/10/language-understanding-1/    -- for text good
+
+https://www.kaggle.com/trvrmgn/keras-image-recognition
