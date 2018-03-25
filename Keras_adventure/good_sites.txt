@@ -24,3 +24,4 @@ https://stackoverflow.com/questions/42045092/does-k-function-method-of-keras-wit
 http://www.orbifold.net/default/2017/01/10/language-understanding-1/    -- for text good
 
 https://www.kaggle.com/trvrmgn/keras-image-recognition
+https://github.com/anujshah1003/Transfer-Learning-in-keras---custom-data
