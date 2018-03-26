@@ -25,3 +25,12 @@ http://www.orbifold.net/default/2017/01/10/language-understanding-1/    -- for t
 
 https://www.kaggle.com/trvrmgn/keras-image-recognition
 https://github.com/anujshah1003/Transfer-Learning-in-keras---custom-data
+
+
+https://machinelearningmastery.com/visualize-deep-learning-neural-network-model-keras/  -- for making GRAPH representation of layers
+https://github.com/keplr-io/quiver   -- interactive visualization of intermediate layers of model
+https://arxiv.org/pdf/1312.6034.pdf
+https://trainer.aetros.com/model/shivi0011/test
+https://github.com/yashk2810/Visualization-of-Convolutional-Layers/blob/master/Visualizing%20Filters%20Python3%20Theano%20Backend.ipynb
+https://datascience.stackexchange.com/questions/20469/keras-visualizing-the-output-of-an-intermediate-layer
+https://stackoverflow.com/questions/46828476/how-to-visualize-output-of-intermediate-layers-of-convolutional-neural-network-i
