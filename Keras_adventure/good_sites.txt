@@ -34,3 +34,6 @@ https://trainer.aetros.com/model/shivi0011/test
 https://github.com/yashk2810/Visualization-of-Convolutional-Layers/blob/master/Visualizing%20Filters%20Python3%20Theano%20Backend.ipynb
 https://datascience.stackexchange.com/questions/20469/keras-visualizing-the-output-of-an-intermediate-layer
 https://stackoverflow.com/questions/46828476/how-to-visualize-output-of-intermediate-layers-of-convolutional-neural-network-i
+
+
+http://deeplearning.net/software/theano_versions/dev/tutorial/conv_arithmetic.html   ----!@#$%^&*(!@#$%^&*!@#$%^&* BEST BEST
