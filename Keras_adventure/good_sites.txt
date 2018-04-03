@@ -37,3 +37,10 @@ https://stackoverflow.com/questions/46828476/how-to-visualize-output-of-intermed
 
 
 http://deeplearning.net/software/theano_versions/dev/tutorial/conv_arithmetic.html   ----!@#$%^&*(!@#$%^&*!@#$%^&* BEST BEST
+
+
+
+
+Install it for keras in python2.7 ubuntu
+-------------------------------------------
+https://pypi.python.org/pypi/Keras
