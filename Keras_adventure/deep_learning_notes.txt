@@ -13,3 +13,6 @@ A dropout layer is used for regularization where you randomly set some of the di
 A dense layer is just a regular layer of neurons in a neural network. Each neuron recieves input from all the neurons in the previous layer, thus densely connected. The layer has a weight matrix W, a bias vector b, and the activations of previous layer a. The following is te docstring of class Dense from the keras documentation:
 
 output = activation(dot(input, kernel) + bias)where activation is the element-wise activation function passed as the activation argument, kernel is a weights matrix created by the layer, and bias is a bias vector created by the layer.
+
+
+http://forums.fast.ai/t/dense-vs-convolutional-vs-fully-connected-layers/191/7
