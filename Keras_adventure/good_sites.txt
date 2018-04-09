@@ -41,7 +41,7 @@ https://gogul09.github.io/software/flower-recognition-deep-learning  -- BEST ---
 
 http://euler.stat.yale.edu/~tba3/stat665/lectures/lec18/notebook18.html
 https://www.kaggle.com/fujisan/use-keras-pre-trained-vgg16-acc-98
-
+https://www.kaggle.com/gaborfodor/dog-breed-pretrained-keras-models-lb-0-3
 
 
 
