@@ -39,6 +39,15 @@ https://stackoverflow.com/questions/46828476/how-to-visualize-output-of-intermed
 http://deeplearning.net/software/theano_versions/dev/tutorial/conv_arithmetic.html   ----!@#$%^&*(!@#$%^&*!@#$%^&* BEST BEST
 https://gogul09.github.io/software/flower-recognition-deep-learning  -- BEST ---- DO IT!!!!!!!!
 
+http://euler.stat.yale.edu/~tba3/stat665/lectures/lec18/notebook18.html
+https://www.kaggle.com/fujisan/use-keras-pre-trained-vgg16-acc-98
+
+
+
+
+
+
+
 https://arxiv.org/pdf/1704.04861.pdf -- mobileNets
 
 Install it for keras in python2.7 ubuntu
