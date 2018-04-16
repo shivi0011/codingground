@@ -43,8 +43,8 @@ http://euler.stat.yale.edu/~tba3/stat665/lectures/lec18/notebook18.html
 https://www.kaggle.com/fujisan/use-keras-pre-trained-vgg16-acc-98
 https://www.kaggle.com/gaborfodor/dog-breed-pretrained-keras-models-lb-0-3
 
-
-
+https://devblogs.nvidia.com/exploring-spacenet-dataset-using-digits/   --- SPACENET DIGITS
+https://towardsdatascience.com/ensembling-convnets-using-keras-237d429157eb-- ensemble of models
 
 
 
