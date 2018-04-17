@@ -47,7 +47,7 @@ https://devblogs.nvidia.com/exploring-spacenet-dataset-using-digits/   --- SPACE
 https://towardsdatascience.com/ensembling-convnets-using-keras-237d429157eb-- ensemble of models
 https://towardsdatascience.com/image-augmentation-for-deep-learning-using-keras-and-histogram-equalization-9329f6ae5085  -- DO IT!!
 https://software.intel.com/en-us/articles/hands-on-ai-part-14-image-data-preprocessing-and-augmentation
-
+https://software.intel.com/en-us/ai-academy/journey/hands-on-tutorials
 
 
 
