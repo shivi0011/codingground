@@ -51,7 +51,7 @@ https://software.intel.com/en-us/ai-academy/journey/hands-on-tutorials
 
 https://www.kaggle.com/hexietufts/easy-to-use-keras-imagedatagenerator
 
-
+https://blog.floydhub.com/colorizing-b&w-photos-with-neural-networks/  -- COLORizing old photos ****
 
 
 https://arxiv.org/pdf/1704.04861.pdf -- mobileNets
