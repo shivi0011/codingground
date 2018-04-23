@@ -56,6 +56,22 @@ https://blog.floydhub.com/my-first-weekend-of-deep-learning/   -- Good DL   DO I
 
 
 
+
+http://scikit-learn.org/stable/modules/generated/sklearn.grid_search.GridSearchCV.html
+
+download hyperas   -- for windows
+https://github.com/maxpumperla/hyperas   -- hyperparameter optimization *****
+paper  -- Algorithms for Hyper-Parameter Optimization
+
+
+
+
+
+
+
+
+
+
 https://arxiv.org/pdf/1704.04861.pdf -- mobileNets
 
 Install it for keras in python2.7 ubuntu
