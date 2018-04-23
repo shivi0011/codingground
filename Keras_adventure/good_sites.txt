@@ -64,12 +64,17 @@ https://github.com/maxpumperla/hyperas   -- hyperparameter optimization *****
 paper  -- Algorithms for Hyper-Parameter Optimization
 
 
+https://www.kaggle.com/sbrugman/tricks-for-the-kaggle-leaderboard
 
 
 
 
 
-
+FISH DETECTION
+--------------------
+https://www.kaggle.com/narae78/fish-detection    -- use for airplane detenction
+https://www.pyimagesearch.com/2014/10/20/finding-shapes-images-using-python-opencv/
+https://www.kaggle.com/jeffd23/deep-learning-in-the-deep-blue-lb-1-279/notebook
 
 
 https://arxiv.org/pdf/1704.04861.pdf -- mobileNets
