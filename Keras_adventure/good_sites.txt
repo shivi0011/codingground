@@ -68,7 +68,8 @@ https://www.kaggle.com/sbrugman/tricks-for-the-kaggle-leaderboard
 
 
 http://iamaaditya.github.io/2016/03/one-by-one-convolution/   ---- BEST***** uunderstanding of conv with animation
-
+https://stackoverflow.com/questions/48239681/training-dataset-with-coloured-and-grayscale-images
+http://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0029740&type=printable  -- download it!!!!!
 
 FISH DETECTION
 --------------------
