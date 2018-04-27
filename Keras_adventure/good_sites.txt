@@ -53,7 +53,7 @@ https://www.kaggle.com/hexietufts/easy-to-use-keras-imagedatagenerator
 
 https://blog.floydhub.com/colorizing-b&w-photos-with-neural-networks/  -- COLORizing old photos ****
 https://blog.floydhub.com/my-first-weekend-of-deep-learning/   -- Good DL   DO IT!!!
-
+https://stats.stackexchange.com/questions/160479/practical-hyperparameter-optimization-random-vs-grid-search
 
 
 
