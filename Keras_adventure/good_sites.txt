@@ -67,7 +67,7 @@ paper  -- Algorithms for Hyper-Parameter Optimization
 https://www.kaggle.com/sbrugman/tricks-for-the-kaggle-leaderboard
 
 
-
+http://iamaaditya.github.io/2016/03/one-by-one-convolution/   ---- BEST***** uunderstanding of conv with animation
 
 
 FISH DETECTION
