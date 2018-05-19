@@ -83,3 +83,9 @@ https://arxiv.org/pdf/1704.04861.pdf -- mobileNets
 Install it for keras in python2.7 ubuntu
 -------------------------------------------
 https://pypi.python.org/pypi/Keras
+
+
+
+
+BEST --- *** how to classificaton and gpu tf install****
+https://www.kaggle.com/sentdex/full-classification-example-with-convnet/notebook
