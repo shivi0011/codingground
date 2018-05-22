@@ -86,6 +86,9 @@ https://pypi.python.org/pypi/Keras
 
 
 
+https://stackoverflow.com/questions/12937812/how-to-create-different-popup-context-menus-for-each-type-of-qtreewidgetitem
+https://gist.github.com/jmk/3906292
+
 
 BEST --- *** how to classificaton and gpu tf install****
 https://www.kaggle.com/sentdex/full-classification-example-with-convnet/notebook
