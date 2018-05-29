@@ -91,4 +91,9 @@ https://gist.github.com/jmk/3906292
 
 
 BEST --- *** how to classificaton and gpu tf install****
-https://www.kaggle.com/sentdex/full-classification-example-with-convnet/notebook
+https://www.kaggle.com/sentdex/full-classification-example-with-conv
+
+net/notebook
+
+http://www.kiranjose.in/blogs/inferencing-on-the-trained-caffe-model-from-nvidia-digits/
+
