@@ -97,3 +97,4 @@ net/notebook
 
 http://www.kiranjose.in/blogs/inferencing-on-the-trained-caffe-model-from-nvidia-digits/
 
+http://lists.qt-project.org/pipermail/qt-interest-old/2009-July/009751.html
