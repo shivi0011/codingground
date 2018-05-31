@@ -99,3 +99,10 @@ http://www.kiranjose.in/blogs/inferencing-on-the-trained-caffe-model-from-nvidia
 
 http://lists.qt-project.org/pipermail/qt-interest-old/2009-July/subject.html#9803 -- list of QT issues
 http://lists.qt-project.org/pipermail/qt-interest-old/2009-July/009751.html
+
+
+https://medium.com/chakki/debug-keras-models-with-tensorflow-debugger-2b68b8e38370        ***Debug keras models****
+https://www.datacamp.com/community/blog/keras-cheat-sheet
+https://chrisalbon.com/deep_learning/keras/adding_dropout/    *******
+https://machinelearningflashcards.com/
+https://www.programcreek.com/python/example/104420/keras.callbacks.TensorBoard
