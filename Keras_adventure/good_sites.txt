@@ -106,3 +106,4 @@ https://www.datacamp.com/community/blog/keras-cheat-sheet
 https://chrisalbon.com/deep_learning/keras/adding_dropout/    *******
 https://machinelearningflashcards.com/
 https://www.programcreek.com/python/example/104420/keras.callbacks.TensorBoard
+https://github.com/aurora95/Keras-FCN/tree/master/utils
