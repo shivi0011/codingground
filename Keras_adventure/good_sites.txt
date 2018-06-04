@@ -110,3 +110,4 @@ https://github.com/aurora95/Keras-FCN/tree/master/utils
 
 https://docs.nvidia.com/deeplearning/digits/digits-user-guide/index.html#unique_1135888919
 https://github.com/NVIDIA/DIGITS/issues/1231 --- inference
+https://github.com/NVIDIA/DIGITS/pull/616
