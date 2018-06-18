@@ -111,3 +111,34 @@ https://github.com/aurora95/Keras-FCN/tree/master/utils
 https://docs.nvidia.com/deeplearning/digits/digits-user-guide/index.html#unique_1135888919
 https://github.com/NVIDIA/DIGITS/issues/1231 --- inference
 https://github.com/NVIDIA/DIGITS/pull/616
+
+
+===============================================
+1) You can use the NVIDIA-DIGITS app to monitor your networks. They provide a GUI including dataset preparation, model selection, and learning curve visualization. More, they use a caffe distribution allowing multi-GPU training.
+
+2) Or, you can simply use the log-parser inside caffe.
+
+/pathtocaffe/build/tools/caffe train --solver=solver.prototxt 2>&1 | tee lenet_train.log
+This allows you to save train log into "lenet_train.log". Then by using:
+
+python /pathtocaffe/tools/extra/parse_log.py lenet_train.log .
+you parse your train log into two csv files, containing train and test loss. You can then plot them using the following python script
+
+import pandas as pd
+from matplotlib import *
+from matplotlib.pyplot import *
+
+train_log = pd.read_csv("./lenet_train.log.train")
+test_log = pd.read_csv("./lenet_train.log.test")
+_, ax1 = subplots(figsize=(15, 10))
+ax2 = ax1.twinx()
+ax1.plot(train_log["NumIters"], train_log["loss"], alpha=0.4)
+ax1.plot(test_log["NumIters"], test_log["loss"], 'g')
+ax2.plot(test_log["NumIters"], test_log["acc"], 'r')
+ax1.set_xlabel('iteration')
+ax1.set_ylabel('train loss')
+ax2.set_ylabel('test accuracy')
+savefig("./train_test_image.png") #save image as png
+=================================================
+
+https://gist.github.com/Coderx7/03f46cb24dcf4127d6fa66d08126fa3b
