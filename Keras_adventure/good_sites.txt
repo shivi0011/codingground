@@ -142,3 +142,9 @@ savefig("./train_test_image.png") #save image as png
 =================================================
 
 https://gist.github.com/Coderx7/03f46cb24dcf4127d6fa66d08126fa3b
+
+
+
+
+https://stackoverflow.com/questions/19227816/open-a-qgraphicscene-child-widget-in-the-mainwindowdd
+http://www.qcustomplot.com/index.php/demos/interactionexample
