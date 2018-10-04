@@ -41,3 +41,12 @@ https://medium.com/the-downlinq/object-detection-on-spacenet-5e691961d257  -- ob
 
 
 http://tensorlayer.readthedocs.io/en/latest/   --- tensorLayer tut
+
+
+
+
++--------------------------------------+
+|           RUNNING                    |
++--------------------------------------+
+https://www.cs.toronto.edu/%7Efrossard/post/vgg16/
+
