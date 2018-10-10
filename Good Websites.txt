@@ -55,3 +55,5 @@ https://www.cs.toronto.edu/%7Efrossard/post/vgg16/
 
 
 https://www.kaggle.com/rdebbe/is-segnet-a-good-model-for-sharp-edge-masking/notebook
+https://www.diycode.cc/projects/developmentseed/skynet-train
+https://qucit.com/keras-segnet-implementation-of-segnet_en/
