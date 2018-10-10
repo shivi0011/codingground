@@ -52,3 +52,6 @@ https://blogs.msdn.microsoft.com/esmsdn/2018/04/09/post-invitado-part2-step-by-s
 +--------------------------------------+
 https://www.cs.toronto.edu/%7Efrossard/post/vgg16/
 
+
+
+https://www.kaggle.com/rdebbe/is-segnet-a-good-model-for-sharp-edge-masking/notebook
